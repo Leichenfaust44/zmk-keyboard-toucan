@@ -1,0 +1,300 @@
+// =============================================================================
+// Combos for Piantor Pro BT
+// =============================================================================
+// All combos are active on layers 0 (Gallium), 1 (NumSym).
+// The combos RETURN and TAB are also active on layer 2 (Fn).
+//
+// Key position reference (5-column layout):
+//
+//   Left hand                    Right hand
+//    0=B   1=L   2=D   3=C   4=V     5=J   6=Y   7=O   8=U   9=?
+//   10=N  11=R  12=T  13=S  14=G    15=P  16=H  17=A  18=E  19=I
+//   20=X  21=Q  22=M  23=W  24=Z    25=K  26=F  27=,  28=.  29=-
+//                30    31    32      33    34    35
+//
+// Combo layout overview:
+//
+//   Left vertical (top+home / home+bottom):    Right vertical (top+home / home+bottom):
+//     B+N → ""       N+X → '                    Y+H → +        H+F → -
+//     L+R → @        R+Q → %                    O+A → *        A+, → /
+//     D+T → #        T+M → \                    U+E → €        E+. → &
+//     C+S → $        S+W → =                    ?+I → Copy     I+- → Paste
+//                                               ?+- → Cut (top+bottom stretch)
+//
+//   Left horizontal (home row):                Right horizontal (bottom row):
+//     R+T → Tab      T+S → Return               K+F → ()       F+, → (       ,+. → )
+//
+// Note: ""← and ()← combos place cursor between the pair for immediate typing
+//
+// Visual combo map:
+//
+//   Left hand                          Right hand
+//      "     @     #     $                 +     *     €  Copy
+//    B   L   D   C   V                 J   Y   O   U   ?
+//    |   |   |   |                         |   |   | \ | / (Cut)
+//   N━━━R━━━T━━━S   G                 P   H   A   E   I
+//    |   |   |   |                         |   |   |  Paste
+//    X   Q   M   W   Z                 K━━━F━━━,━━━.   -
+//   ""   %   \   =                        () ( ) (parentheses)
+//                                          
+//        Tab━━Return (horizontal home row combos)
+//
+// Special combos:
+//   - ""← (N+X): Double quotes with cursor between
+//   - ()← (K+F): Parentheses with cursor between
+//   - Copy/Paste/Cut: Right pinky column vertical combos
+// =============================================================================
+
+combos {
+    compatible = "zmk,combos";
+
+    // =========================================================================
+    // WHITESPACE — Tab and Return
+    // =========================================================================
+
+    // R+T (positions 11+12) → Tab
+    // Two adjacent home-row keys, left hand index+middle columns.
+    combo_tab {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <150>;
+        key-positions = <11 12>;
+        bindings = <&kp TAB>;
+        layers = <0 1 2>;
+    };
+
+    // T+S (positions 12+13) → Return
+    // Two adjacent home-row keys, left hand middle+ring columns.
+    combo_ret {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <150>;
+        key-positions = <12 13>;
+        bindings = <&kp RET>;
+        layers = <0 1 2>;
+    };
+
+    // =========================================================================
+    // SYMBOLS — Vertical combos on the LEFT hand
+    // Each column produces two symbols: top+home row → one, home+bottom row → another.
+    // =========================================================================
+
+    // L+R (positions 1+11) → @
+    // Top row + home row, left index column.
+    combo_char_at {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <1 11>;
+        bindings = <&kp DE_AT_SIGN>;
+        layers = <0 1>;
+    };
+
+    // R+Q (positions 11+21) → %
+    // Home row + bottom row, left index column.
+    combo_char_percent {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <11 21>;
+        bindings = <&kp DE_PERCENT>;
+        layers = <0 1>;
+    };
+
+    // D+T (positions 2+12) → #
+    // Top row + home row, left middle column.
+    combo_char_hash {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <2 12>;
+        bindings = <&kp DE_HASH>;
+        layers = <0 1>;
+    };
+
+    // T+M (positions 12+22) → backslash
+    // Home row + bottom row, left middle column.
+    combo_char_bslh {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <12 22>;
+        bindings = <&kp DE_BACKSLASH>;
+        layers = <0 1>;
+    };
+
+    // C+S (positions 3+13) → $
+    // Top row + home row, left ring column.
+    combo_char_dollar {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <3 13>;
+        bindings = <&kp DE_DOLLAR>;
+        layers = <0 1>;
+    };
+
+    // S+W (positions 13+23) → =
+    // Home row + bottom row, left ring column.
+    combo_char_equal {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <13 23>;
+        bindings = <&kp DE_EQUAL>;
+        layers = <0 1>;
+    };
+
+    // =========================================================================
+    // SYMBOLS — Vertical combos on the RIGHT hand
+    // Each column produces two symbols: top+home row → one, home+bottom row → another.
+    // =========================================================================
+
+    // Y+H (positions 6+16) → +
+    // Top row + home row, right index column.
+    combo_char_plus {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <6 16>;
+        bindings = <&kp DE_PLUS>;
+        layers = <0 1>;
+    };
+
+    // H+F (positions 16+26) → -
+    // Home row + bottom row, right index column.
+    combo_char_minus {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <16 26>;
+        bindings = <&kp DE_MINUS>;
+        layers = <0 1>;
+    };
+
+    // O+A (positions 7+17) → *
+    // Top row + home row, right middle column.
+    combo_char_astrk {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <7 17>;
+        bindings = <&kp DE_ASTERISK>;
+        layers = <0 1>;
+    };
+
+    // A+, (positions 17+27) → /
+    // Home row + bottom row, right middle column.
+    combo_char_slash {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <17 27>;
+        bindings = <&kp DE_SLASH>;
+        layers = <0 1>;
+    };
+
+    // U+E (positions 8+18) → €
+    // Top row + home row, right ring column.
+    combo_char_euro {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <8 18>;
+        bindings = <&kp DE_EURO>;
+        layers = <0 1>;
+    };
+
+    // E+. (positions 18+28) → &
+    // Home row + bottom row, right ring column.
+    combo_char_amps {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <18 28>;
+        bindings = <&kp DE_AMPERSAND>;
+        layers = <0 1>;
+    };
+
+    // =========================================================================
+    // BRACKETS — Horizontal combos on the RIGHT hand bottom row
+    // =========================================================================
+
+    // F+, (positions 26+27) → (
+    // Two adjacent bottom-row keys, right index+middle columns.
+    combo_char_lpar {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <150>;
+        key-positions = <26 27>;
+        bindings = <&kp DE_LEFT_PARENTHESIS>;
+        layers = <0 1>;
+    };
+
+    // ,+. (positions 27+28) → )
+    // Two adjacent bottom-row keys, right middle+ring columns.
+    combo_char_rpar {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <150>;
+        key-positions = <27 28>;
+        bindings = <&kp DE_RIGHT_PARENTHESIS>;
+        layers = <0 1>;
+    };
+
+    // =========================================================================
+    // QUOTES — Vertical combos on the LEFT hand
+    // =========================================================================
+
+    // B+N (positions 0+10) → ""← (quotes with cursor in between)
+    // Home row + bottom row, left pinky column.
+    combo_char_quote_pair {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <0 10>;
+        bindings = <&quote_pair>;
+        layers = <0 1>;
+    };
+
+    // B+N (positions 0+10) → '
+    // Top row + home row, left pinky column.
+    combo_char_dquote {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <10 20>;
+        bindings = <&kp DE_APOS>;
+        layers = <0 1>;
+    };
+
+    // =========================================================================
+    // PARENTHESES PAIR — K+F combo
+    // =========================================================================
+
+    // K+F (positions 25+26) → ()← (parentheses with cursor in between)
+    // Two adjacent bottom-row keys, right pinky+ring columns.
+    combo_paren_pair {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <150>;
+        key-positions = <25 26>;
+        bindings = <&paren_pair>;
+        layers = <0 1>;
+    };
+
+    // =========================================================================
+    // CLIPBOARD OPERATIONS — Right hand combos
+    // =========================================================================
+
+    // ?+I (positions 9+19) → Copy (Ctrl+C)
+    // Top row + home row, right pinky column.
+    combo_copy {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <9 19>;
+        bindings = <&kp LC(C)>;
+        layers = <0>;
+    };
+
+    // I+- (positions 19+29) → Paste (Ctrl+V)
+    // Home row + bottom row, right pinky column.
+    combo_paste {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <19 29>;
+        bindings = <&kp LC(V)>;
+        layers = <0>;
+    };
+
+    // ?+- (positions 9+29) → Cut (Ctrl+X)
+    // Top row + bottom row, right pinky column (larger stretch).
+    combo_cut {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <100>;
+        key-positions = <9 29>;
+        bindings = <&kp LC(X)>;
+        layers = <0>;
+    };
+};

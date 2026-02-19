@@ -4,6 +4,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: urob
+      url-base: https://github.com/urob
     - name: petejohanson
       url-base: https://github.com/petejohanson/
     - name: caksoylar
@@ -13,7 +15,22 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
+      revision: v0.3
       import: app/west.yml
+    # urob modules (from Piantor config)
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: v0.3
+    - name: zmk-auto-layer
+      remote: urob
+      revision: v0.3
+    - name: zmk-leader-key
+      remote: urob
+      revision: v0.3
+    - name: zmk-helpers
+      remote: urob
+      revision: v0.3
+    # Toucan-specific modules
     - name: cirque-input-module
       remote: geeksville
       revision: toucan
