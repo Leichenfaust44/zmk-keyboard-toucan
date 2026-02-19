@@ -1,0 +1,448 @@
+// =============================================================================
+// Custom Behaviors for Piantor Pro BT
+// =============================================================================
+// Layer reference:
+//   0 = Gallium (default)   1 = NumSym   2 = Fn   3 = NavSys
+//
+// Timing Summary:
+//   Home row mods (hml/hmr):       280ms tap, 175ms quick-tap, 150ms prior-idle
+//   Space/Nav (space_nav):         280ms tap, 175ms quick-tap, 150ms prior-idle
+//   Magic Key (magic_key):         200ms tap, 175ms quick-tap (tap-preferred)
+//   NumSym (numsym_tap):           280ms tap, 225ms quick-tap (balanced)
+//   Tap-dances (safety wrappers):  300ms double-tap window
+//   Combos:                        50ms timeout, 100-150ms prior-idle
+//
+// =============================================================================
+
+
+// -----------------------------------------------------------------------------
+// HOME ROW MODS
+// -----------------------------------------------------------------------------
+
+// Left-hand home row mod hold-tap.
+// Hold = modifier key, Tap = letter key.
+// Only activates hold when a key on the RIGHT side of the keyboard is pressed
+// (cross-hand activation), preventing accidental modifier triggers.
+// Timing: 280ms tapping term, 175ms quick-tap, 150ms prior-idle guard.
+//
+// Hold-trigger positions (RIGHT side + thumbs):
+//    —   —   —   —   —  |  ✓   ✓   ✓   ✓   ✓      positions 5-9
+//    —   —   —   —   —  |  ✓   ✓   ✓   ✓   ✓      positions 15-19
+//    —   —   —   —   —  |  ✓   ✓   ✓   ✓   ✓      positions 25-29
+//                —   —   —   |  ✓   ✓   ✓           positions 33-35
+hml: homerow_mods_left {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    require-prior-idle-ms = <150>;
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 33 34 35>;
+    hold-trigger-on-release;
+};
+
+// Right-hand home row mod hold-tap.
+// Hold = modifier key, Tap = letter key.
+// Mirror of hml — only activates hold when a key on the LEFT side is pressed.
+// Timing: 280ms tapping term, 175ms quick-tap, 150ms prior-idle guard.
+//
+// Hold-trigger positions (LEFT side + thumbs):
+//    ✓   ✓   ✓   ✓   ✓  |  —   —   —   —   —      positions 0-4
+//    ✓   ✓   ✓   ✓   ✓  |  —   —   —   —   —      positions 10-14
+//    ✓   ✓   ✓   ✓   ✓  |  —   —   —   —   —      positions 20-24
+//                ✓   ✓   ✓   |  —   —   —           positions 30-32
+hmr: homerow_mods_right {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    require-prior-idle-ms = <150>;
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32>;
+    hold-trigger-on-release;
+};
+
+
+// -----------------------------------------------------------------------------
+// UMLAUT MACROS
+// -----------------------------------------------------------------------------
+// Implementation for German umlauts (ä, ö, ü) using dead key composition.
+// Method: backspace + DE_UMLAUT dead key + base vowel
+// The OS composes these into the final umlaut character.
+//
+// Lowercase umlauts (a/o/u → ä/ö/ü):
+//   - Release any active shift
+//   - Backspace to remove the triggering letter
+//   - Type: dead umlaut + base vowel
+//   
+// Uppercase umlauts (A/O/U → Ä/Ö/Ü):
+//   - Release any active shift
+//   - Backspace to remove the triggering letter
+//   - Temporarily enable CAPSLOCK
+//   - Type: dead umlaut + base vowel
+//   - Disable CAPSLOCK
+//
+// Note: These are triggered by the magic_key adaptive behavior after typing a/A/o/O/u/U
+// -----------------------------------------------------------------------------
+
+// ä — backspace + dead umlaut + a
+uml_a: umlaut_a {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_tap &kp BACKSPACE>
+        , <&macro_tap &kp DE_UMLAUT>
+        , <&macro_tap &kp A>
+        ;
+};
+
+// Ä
+uml_a_upper: umlaut_a_upper {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_release &kp LSHIFT &kp RSHIFT>
+        , <&macro_tap &kp BACKSPACE>
+        , <&macro_tap &kp CAPSLOCK>
+        , <&macro_tap &kp DE_UMLAUT>
+        , <&macro_tap &kp A>
+        , <&macro_tap &kp CAPSLOCK>
+        ;
+};
+
+// ö — backspace + dead umlaut + o
+uml_o: umlaut_o {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_tap &kp BACKSPACE>
+        , <&macro_tap &kp DE_UMLAUT>
+        , <&macro_tap &kp O>
+        ;
+};
+
+// Ö
+uml_o_upper: umlaut_o_upper {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_release &kp LSHIFT &kp RSHIFT>
+        , <&macro_tap &kp BACKSPACE>
+        , <&macro_tap &kp CAPSLOCK>
+        , <&macro_tap &kp DE_UMLAUT>
+        , <&macro_tap &kp O>
+        , <&macro_tap &kp CAPSLOCK>
+        ;
+};
+
+// ü — backspace + dead umlaut + u
+uml_u: umlaut_u {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_tap &kp BACKSPACE>
+        , <&macro_tap &kp DE_UMLAUT>
+        , <&macro_tap &kp U>
+        ;
+};
+
+// Ü
+uml_u_upper: umlaut_u_upper {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_release &kp LSHIFT &kp RSHIFT>
+        , <&macro_tap &kp BACKSPACE>
+        , <&macro_tap &kp CAPSLOCK>
+        , <&macro_tap &kp DE_UMLAUT>
+        , <&macro_tap &kp U>
+        , <&macro_tap &kp CAPSLOCK>
+        ;
+};
+
+
+// -----------------------------------------------------------------------------
+// SPECIAL CHARACTER MACROS
+// -----------------------------------------------------------------------------
+// Macros for common programming patterns and cursor positioning.
+
+// Parentheses with cursor in between: ()←
+// Types ( ) and then moves cursor left
+paren_pair: paren_pair_macro {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_tap &kp DE_LEFT_PARENTHESIS>
+        , <&macro_tap &kp DE_RIGHT_PARENTHESIS>
+        , <&macro_tap &kp LEFT>
+        ;
+};
+
+// Double quotes with cursor in between: ""←
+// Types " " and then moves cursor left
+quote_pair: quote_pair_macro {
+    compatible = "zmk,behavior-macro";
+    #binding-cells = <0>;
+    bindings
+        = <&macro_tap &kp DE_DQT>
+        , <&macro_tap &kp DE_DQT>
+        , <&macro_tap &kp LEFT>
+        ;
+};
+
+
+// -----------------------------------------------------------------------------
+// MAGIC KEY SYSTEM
+// -----------------------------------------------------------------------------
+// The Magic Key provides intelligent repeat and context-aware substitutions.
+// 
+// Adaptive substitutions (within timeout window):
+//   Letter bigrams:  C→H  E→U  H→Y  L→K  N→D  P→H  Q→U  R→L  S→C  T→M
+//   Special pairs:   -→→  T→™ (trademark symbol)
+//   Umlauts (1s):    a→ä  A→Ä  o→ö  O→Ö  u→ü  U→Ü
+//   Default:         key_repeat (any other key)
+//
+// Timeout windows:
+//   - Umlauts: 1000ms (1 second) - must be typed quickly after vowel
+//   - Letter substitutions: 5000ms (5 seconds) - longer window for natural typing
+// -----------------------------------------------------------------------------
+magic_key_tap: magic_key_tap {
+    compatible = "zmk,behavior-adaptive-key";
+    #binding-cells = <0>;
+    bindings = <&key_repeat>;
+
+    // a → ä
+    repeat_a {
+        trigger-keys = <A>;
+        bindings = <&uml_a>;
+        max-prior-idle-ms = <1000>;
+        strict-modifiers;
+    };
+
+    // A → Ä
+    repeat_a_upper {
+        trigger-keys = <LS(A)>;
+        bindings = <&uml_a_upper>;
+        max-prior-idle-ms = <1000>;
+        strict-modifiers;
+    };
+
+    // C → output H
+    repeat_c {
+        trigger-keys = <C>;
+        bindings = <&kp H>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // E → output U
+    repeat_e {
+        trigger-keys = <E>;
+        bindings = <&kp U>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // H → output Y
+    repeat_h {
+        trigger-keys = <H>;
+        bindings = <&kp Y>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // L → output K
+    repeat_l {
+        trigger-keys = <L>;
+        bindings = <&kp K>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // N → output D
+    repeat_n {
+        trigger-keys = <N>;
+        bindings = <&kp D>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // o → ö
+    repeat_o {
+        trigger-keys = <O>;
+        bindings = <&uml_o>;
+        max-prior-idle-ms = <1000>;
+        strict-modifiers;
+    };
+
+    // O → Ö
+    repeat_o_upper {
+        trigger-keys = <LS(O)>;
+        bindings = <&uml_o_upper>;
+        max-prior-idle-ms = <1000>;
+        strict-modifiers;
+    };
+
+    // P → output H
+    repeat_p {
+        trigger-keys = <P>;
+        bindings = <&kp H>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // Q → output U
+    repeat_q {
+        trigger-keys = <Q>;
+        bindings = <&kp U>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // u → ü
+    repeat_u {
+        trigger-keys = <U>;
+        bindings = <&uml_u>;
+        max-prior-idle-ms = <1000>;
+        strict-modifiers;
+    };
+
+    // U → Ü
+    repeat_u_upper {
+        trigger-keys = <LS(U)>;
+        bindings = <&uml_u_upper>;
+        max-prior-idle-ms = <1000>;
+        strict-modifiers;
+    };
+
+    // R → output L
+    repeat_r {
+        trigger-keys = <R>;
+        bindings = <&kp L>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // S → output C
+    repeat_s {
+        trigger-keys = <S>;
+        bindings = <&kp C>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // T → output M
+    repeat_t {
+        trigger-keys = <T>;
+        bindings = <&kp M>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // - → output → (arrow: ->)
+    repeat_minus {
+        trigger-keys = <DE_MINUS>;
+        bindings = <&kp DE_GT>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+};
+
+// The Magic Key on the default layer thumb cluster.
+// Hold = momentary layer activation (&mo), Tap = magic_key_tap (adaptive repeat/substitution).
+// Timing: 200ms tapping term (tap-preferred), 175ms quick-tap.
+magic_key: magic_key {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    bindings = <&mo>, <&magic_key_tap>;
+};
+
+
+// -----------------------------------------------------------------------------
+// TAP-DANCE SAFETY WRAPPERS (dangerous / destructive actions)
+// Single tap = nothing. Double tap = action.
+// Prevents accidental triggering of destructive system functions.
+// -----------------------------------------------------------------------------
+
+// Double-tap to clear ALL Bluetooth profiles. Single tap is a no-op.
+td_bt_clr_all: tap_dance_bt_clear_all {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <300>;
+    bindings = <&none>, <&bt BT_CLR_ALL>;
+};
+
+// Double-tap to clear the CURRENT Bluetooth profile. Single tap is a no-op.
+td_bt_clr: tap_dance_bt_clear {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <300>;
+    bindings = <&none>, <&bt BT_CLR>;
+};
+
+// Double-tap to trigger a system reset. Single tap is a no-op.
+td_reset: tap_dance_reset {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <300>;
+    bindings = <&none>, <&sys_reset>;
+};
+
+// Double-tap to enter the bootloader. Single tap is a no-op.
+td_boot: tap_dance_bootloader {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <300>;
+    bindings = <&none>, <&bootloader>;
+};
+
+
+// -----------------------------------------------------------------------------
+// NAV LAYER SPECIAL BEHAVIOURS
+// -----------------------------------------------------------------------------
+
+// The Space/Nav thumb key on the default layer.
+// Hold = momentary NavSys layer (&mo), Tap = plain space (&kp DE_SPACE).
+// Cross-hand hold-trigger positions exclude dangerous reset/bootloader key positions
+// (positions 0, 9, 10, 19, 20, 29 are excluded for safety).
+// Timing: 280ms tapping term, 175ms quick-tap, 150ms prior-idle guard.
+//
+// Hold-trigger positions (excludes corner keys with dangerous actions):
+//    —   ✓   ✓   ✓   ✓  |  ✓   ✓   ✓   ✓   —      positions 1-8 (not 0,9)
+//    —   ✓   ✓   ✓   ✓  |  ✓   ✓   ✓   ✓   —      positions 11-18 (not 10,19)
+//    —   ✓   ✓   ✓   ✓  |  ✓   ✓   ✓   ✓   —      positions 21-28 (not 20,29)
+//                ✓   ✓   ✓   |  ✓   ✓   ✓           positions 30-35
+space_nav: space_nav_layer {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    require-prior-idle-ms = <150>;
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    bindings = <&mo>, <&kp>;
+    hold-trigger-key-positions = <1 2 3 4 5 6 7 8 11 12 13 14 15 16 17 18 21 22 23 24 25 26 27 28 30 31 32 33 34 35>;
+    hold-trigger-on-release;
+};
+
+// -----------------------------------------------------------------------------
+// NUMSYM THUMB KEY
+// -----------------------------------------------------------------------------
+
+// The NumSym thumb key on the default layer.
+// Hold = momentary NumSym layer (&mo), Tap = num_word (urob's auto-layer:
+// activates a number layer that auto-exits when non-number keys are pressed).
+// Timing: 280ms tapping term (balanced), 225ms quick-tap.
+numsym_tap: numsym_toggle_hold {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <225>;
+    bindings = <&mo>, <&num_word>;
+};
