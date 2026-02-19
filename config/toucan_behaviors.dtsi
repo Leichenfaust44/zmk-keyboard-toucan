@@ -1,5 +1,5 @@
 // =============================================================================
-// Custom Behaviors for Piantor Pro BT
+// Custom Behaviors for Toucan
 // =============================================================================
 // Layer reference:
 //   0 = Gallium (default)   1 = NumSym   2 = Fn   3 = NavSys
@@ -11,6 +11,7 @@
 //   NumSym (numsym_tap):           280ms tap, 225ms quick-tap (balanced)
 //   Tap-dances (safety wrappers):  300ms double-tap window
 //   Combos:                        50ms timeout, 100-150ms prior-idle
+//   Scroll+mod (scrl_*):           150ms tap, tap-preferred
 //
 // =============================================================================
 
@@ -445,4 +446,49 @@ numsym_tap: numsym_toggle_hold {
     tapping-term-ms = <280>;
     quick-tap-ms = <225>;
     bindings = <&mo>, <&num_word>;
+};
+
+
+// -----------------------------------------------------------------------------
+// FN LAYER MOUSE SCROLL + MODIFIER HOLD-TAPS
+// -----------------------------------------------------------------------------
+// Used on the right home row of the Fn layer.
+// Tap = mouse scroll, Hold = modifier key.
+// Short tapping term (150ms, tap-preferred) for responsive scrolling.
+// No require-prior-idle needed — these only appear on the Fn layer, not default.
+//
+// Key positions on Fn layer right home row:
+//   H(pos 15) = ScrlLeft / RShift
+//   A(pos 16) = ScrlDown / RCtrl   (note: O=ScrlUp is on top row, pos 6)
+//   E(pos 18) = ScrlRight / RAlt
+//   I(pos 19) = RGui (unchanged, no scroll assigned)
+//
+// Note: O=ScrlUp (pos 6, top row) has no modifier conflict so stays as plain &msc.
+// -----------------------------------------------------------------------------
+
+// H position: tap = scroll left, hold = Right Shift
+scrl_sft: scroll_or_shift {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <150>;
+    bindings = <&kp>, <&msc>;
+};
+
+// A position: tap = scroll down, hold = Right Ctrl
+scrl_ctl: scroll_or_ctrl {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <150>;
+    bindings = <&kp>, <&msc>;
+};
+
+// E position: tap = scroll right, hold = Right Alt
+scrl_alt: scroll_or_alt {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <150>;
+    bindings = <&kp>, <&msc>;
 };

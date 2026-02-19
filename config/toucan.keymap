@@ -56,16 +56,17 @@
  *   Thumbs: to(0) | SPACE | trans→MagicKey | to(0) | BSPC | DEL
  *
  * ============================================================
- * Fn (Layer 2): Function keys
+ * Fn (Layer 2): Function keys + Mouse
  * ============================================================
- *   Activated by: hold MagicKey thumb
+ *   Activated by: hold MagicKey thumb (left hand) — right hand free for trackpad
  *
- *   Top row:  F10  F7  F8  F9  —  |  —  —     —     —     —
- *   Home row: F11  F4  F5  F6  —  |  —  RSft  RCtl  RAlt  RGui
- *   Bot row:  F12  F1  F2  F3  —  |  —  —     —     —     —
+ *   Top row:  F10  F7  F8  F9  —  |  —    —        ScrlUp      —           —
+ *   Home row: F11  F4  F5  F6  —  |  —    ScL/RSft ScD/RCtl    ScR/RAlt    RGui
+ *   Bot row:  F12  F1  F2  F3  —  |  —    —        —           —           —
  *
- *   Right side modifiers allow Shift/Ctrl/Alt/Super + F-key combinations
- *   Thumbs: to(0) | SPACE | trans→MagicKey | trans→NumSym | BSPC | DEL
+ *   Right home row: tap=scroll, hold=modifier (150ms tapping term)
+ *   O(top)=ScrlUp (no modifier conflict, plain msc)
+ *   Thumbs: to(0) | SPACE | trans→MagicKey | LClick | RClick | MClick
  *
  * ============================================================
  * NavSys (Layer 3): Navigation and system controls
@@ -176,18 +177,18 @@ bindings = <
 
 fn_layer {
 display-name = "Fun";
-// Function keys. Activated by holding MagicKey thumb (mo 2).
-// Right side exposes raw modifiers for Shift/Ctrl/Alt/Super + F-key combinations.
+// Function keys + Mouse controls. Activated by holding MagicKey thumb (mo 2).
+// Left side: F-keys. Right side: scroll (tap) / modifier (hold) + mouse clicks on thumbs.
 // -----------------------------------------------------------------------
-// | F10 | F7  | F8  | F9  |  —  |   |  —  |  —  |  —  |  —  |  —  |
-// | F11 | F4  | F5  | F6  |  —  |   |  —  |RSft |RCtl |RAlt |RGui |
+// | F10 | F7  | F8  | F9  |  —  |   |  —  |  —  | ScU |  —  |  —  |
+// | F11 | F4  | F5  | F6  |  —  |   |  —  |ScL/RSft|ScD/RCtl|ScR/RAlt| RGui |
 // | F12 | F1  | F2  | F3  |  —  |   |  —  |  —  |  —  |  —  |  —  |
-//       | to(0) | SPACE | trans(MagicKey) | trans(NumSym) | BSPC | DEL |
+//       | to(0) | SPACE | trans(MagicKey) | LClk | RClk | MClk |
 bindings = <
-&kp F10  &kp F7  &kp F8  &kp F9  &none   &none  &none               &none                 &none          &none
-&kp F11  &kp F4  &kp F5  &kp F6  &none   &none  &kp RIGHT_SHIFT     &kp RIGHT_CONTROL     &kp RIGHT_ALT  &kp RIGHT_GUI
-&kp F12  &kp F1  &kp F2  &kp F3  &none   &none  &none               &none                 &none          &none
-&to 0    &kp DE_SPACE    &trans  &trans  &kp BACKSPACE  &kp DEL
+&kp F10  &kp F7  &kp F8  &kp F9  &none   &none  &none                              &msc SCRL_UP                       &none                              &none
+&kp F11  &kp F4  &kp F5  &kp F6  &none   &none  &scrl_sft RIGHT_SHIFT SCRL_LEFT    &scrl_ctl RIGHT_CONTROL SCRL_DOWN  &scrl_alt RIGHT_ALT SCRL_RIGHT     &kp RIGHT_GUI
+&kp F12  &kp F1  &kp F2  &kp F3  &none   &none  &none                              &none                              &none                              &none
+&to 0    &kp DE_SPACE    &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK
 >;
 };
 
