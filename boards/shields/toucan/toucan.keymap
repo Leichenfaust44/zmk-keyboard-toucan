@@ -1,216 +1,74 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- *
- * Gallium v1 layout (customized) with home row mods
- * Swiss German (DE-CH) keyboard layout
- *
- * Layer order:
- *   0 = Gallium (default)
- *   1 = NumSym
- *   2 = Fn
- *   3 = NavSys
- *
- * ============================================================
- * Gallium (Layer 0): Default layer
- * ============================================================
- *   Layout: Gallium v1, Columnar Staggered Version
- *
- *   Top row:  B  L  D  C  V  |  J  Y  O  U  ?/!
- *   Home row: N  R  T  S  G  |  P  H  A  E  I
- *   Bot row:  X  Q  M  W  Z  |  K  F  ,/; ./: -/_
- *
- *   Top row hold-taps (mt):
- *     ?=!
- *
- *   Bot row hold-taps (mt):
- *     ,=;  .=:  -=_
- *
- *   Home row mods (cross-hand activation only):
- *     Left:  N=Super  R=Alt  T=Ctrl  S=Shift
- *     Right: H=Shift  A=Ctrl E=Alt   I=Super
- *
- *   Thumbs:
- *     ESC | Space(hold=NavSys/3) | MagicKey(hold=Fn/2) | NumSym(tap=num_word,hold=layer) | BSPC | DEL
- *
- *   Space/Nav:  tap = smart space (auto-capitalises after . ? !), hold = NavSys layer
- *   MagicKey:   tap = adaptive key (repeat, or substitution after A→U C→H E→U H→Y
- *                     L→K N→D O→A P→H Q→U R→L S→C T→M), hold = Fn layer
- *   NumSym:     tap = num_word (auto-exit number layer), hold = momentary NumSym layer
- *
- * ============================================================
- * NumSym (Layer 1): Numbers and symbols
- * ============================================================
- *   Activated by: tap NumSym thumb (num_word), hold NumSym thumb (momentary)
- *   num_word auto-exits on non-number/symbol keys
- *
- *   Top row:  ´  7  8  9  §  |  [  ]  <  >  |
- *   Home row: 0  4  5  6  —  |  "  '  ^  `  ~
- *   Bot row:  .  1  2  3  °  |  {  }  —  —  —
- *
- *   Home row mods:
- *     Left:  0=Super  4=Alt  5=Ctrl  6=Shift
- *     Right: '=Shift  ^=Ctrl `=Alt   ~=Super
- *
- *   Thumbs: to(0) | SPACE | trans→MagicKey | to(0) | BSPC | DEL
- *
- * ============================================================
- * Fn (Layer 2): Function keys
- * ============================================================
- *   Activated by: hold MagicKey thumb
- *
- *   Top row:  F10  F7  F8  F9  —  |  —  —     —     —     —
- *   Home row: F11  F4  F5  F6  —  |  —  RSft  RCtl  RAlt  RGui
- *   Bot row:  F12  F1  F2  F3  —  |  —  —     —     —     —
- *
- *   Right side modifiers allow Shift/Ctrl/Alt/Super + F-key combinations
- *   Thumbs: to(0) | SPACE | trans→MagicKey | trans→NumSym | BSPC | DEL
- *
- * ============================================================
- * NavSys (Layer 3): Navigation and system controls
- * ============================================================
- *   Activated by: hold Space thumb
- *
- *   Top row:  BtClrAll**  Next  VolUp   RGB_OFF  StudioUnlk  |  PgUp  Home  Up    End    BtClr**
- *   Home row: LGui        Prev  VolDn   LShift   —           |  PgDn  Left  Down  Right  Reset**
- *   Bot row:  Boot**      Play  Mute    MicMute  —           |  CapsW CapsL PrtSc —      Boot**
- *
- *   Home row hold-taps: Prev=hold:Alt  VolDn=hold:Ctrl
- *   MicMute = LGui+RAlt+K shortcut
- *   CapsW = Caps Word (auto-deactivates after word boundary)
- *   CapsL = Caps Lock (manual toggle)
- *   ** = tap-dance safety: single tap = nothing, double-tap = action
- *
- *   Thumbs: BT_PRV | BT_SEL 0 | BT_NXT | — | — | to(0)
- */
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/outputs.h>
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
-#include <dt-bindings/zmk/pointing.h>
-#include <behaviors/num_word.dtsi>
-#include "keys_de_swiss.h"
 
-// urob's helper macros for ZMK behaviors
-#include "zmk-helpers/helper.h"
-
-&num_word {
-continue-list = <BSPC DEL DOT PLUS MINUS ASTRK FSLH EQUAL SPACE>;
-};
-
-&sl {
-release-after-ms = <5000>;
-ignore-modifiers;
-};
-
-&sk {
-release-after-ms = <5000>;
-quick-release;
-};
-
-&mt {
-tapping-term-ms = <280>;
-quick-tap-ms = <175>;
-require-prior-idle-ms = <150>;
-flavor = "balanced";
-hold-trigger-on-release;
-};
+#define BASE 0
+#define NAV  1
+#define SYM  2
+#define ADJ  3
 
 / {
-chosen {
-zmk,physical-layout = &default_layout;
-};
-};
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
 
-/ {
-behaviors {
-#include "toucan_behaviors.dtsi"
-};
+    keymap {
+        compatible = "zmk,keymap";
 
-#include "toucan_combos.dtsi"
+        base {
+            display-name = "BASE";
+            bindings = <
+                &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+                &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+                &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                                &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+            >;
+        };
 
-keymap {
-compatible = "zmk,keymap";
+        nav {
+            display-name = "NAV";
+            bindings = <
+                &kp TAB     &kp N1          &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
+                &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+                &kp LSHFT   &studio_unlock  &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
+                                                &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+            >;
+        };
 
-default_layer {
-display-name = "Gallium";
-// Gallium v1 (customized: X↔Q) with home row mods
-// Top row hold-taps: ?=!
-// Bot row hold-taps: ,=;  .=:  -=_
-// Home row mods — Left: N=Super R=Alt T=Ctrl S=Shift | Right: H=Shift A=Ctrl E=Alt I=Super
-// -----------------------------------------------------------------------
-// |  B  |  L  |  D  |  C  |  V  |   |  J  |  Y  |  O  |  U  | ?/! |
-// | N/Gu|R/Alt|T/Ctl|S/Sft|  G  |   |  P  |H/Sft|A/Ctl|E/Alt| I/Gu|
-// |  X  |  Q  |  M  |  W  |  Z  |   |  K  |  F  | ,/; | ./: | -/_ |
-//       | ESC | Space(NavSys) | MagicKey(Fn) | NumSym | BSPC | DEL |
-bindings = <
-&kp B           &kp L                &kp D                &kp C               &kp V      &kp J   &kp DE_Y               &kp O                  &kp U             &mt DE_EXCL DE_QMARK
-&hml LEFT_GUI N &hml LEFT_ALT R      &hml LEFT_CONTROL T  &hml LEFT_SHIFT S   &kp G      &kp P   &hmr RIGHT_SHIFT H  &hmr RIGHT_CONTROL A   &hmr RIGHT_ALT E  &hmr RIGHT_GUI I
-&kp X           &kp Q                &kp M                &kp W               &kp DE_Z      &kp K   &kp F               &mt DE_SEMI DE_COMMA &mt DE_COLON DE_DOT  &mt DE_UNDER DE_MINUS
-&kp ESCAPE         &space_nav 3 DE_SPACE          &magic_key 2 0          &numsym_tap 1 1        &kp BACKSPACE &kp DEL
->;
-};
+        sym {
+            display-name = "SYM";
+            bindings = <
+                &kp TAB   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
+                &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
+                &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
+                                          &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+            >;
+        };
 
-num_sym_layer {
-display-name = "NumSym";
-// Numbers and symbols. Activated via NumSym thumb (num_word tap or momentary hold).
-// num_word auto-exits on non-number/symbol keys.
-// Home row mods — Left: 0=Super 4=Alt 5=Ctrl 6=Shift | Right: ^=Ctrl `=Alt ~=Super
-// Note: " and ' are available as combos (B+N and N+X respectively)
-// -----------------------------------------------------------------------
-// |  ´  |  7  |  8  |  9  |  §  |   |  [  |  ]  |  <  |  >  |  |  |
-// |0/Gu |4/Alt|5/Ctl|6/Sft|  —  |   |  {  |}/Sft|^/Ctl|`/Alt|~/Gu |
-// |  .  |  1  |  2  |  3  |  °  |   |  —  |  —  |  —  |  —  |  —  |
-//       | to(0) | SPACE | trans(MagicKey) | to(0) | BSPC | DEL |
-bindings = <
-&kp DE_ACUTE        &kp DE_N7            &kp DE_N8               &kp DE_N9              &kp DE_SECT   &kp DE_LBKT    &kp DE_RBKT           &kp DE_LT            &kp DE_GT     &kp DE_PIPE
-&hml LEFT_GUI DE_N0 &hml LEFT_ALT DE_N4  &hml LEFT_CONTROL DE_N5 &hml LEFT_SHIFT DE_N6  &none       &kp DE_LBRC   &hmr RIGHT_SHIFT DE_RBRC &hmr RIGHT_CONTROL DE_CARET &hmr RIGHT_ALT DE_GRAVE &hmr RIGHT_GUI DE_TILDE
-&kp DE_DOT       &kp DE_N1            &kp DE_N2               &kp DE_N3              &kp DE_DEG    &none      &none             &none           &none             &none
-&to 0               &kp DE_SPACE         &trans                  &to 0                  &kp BACKSPACE    &kp DEL
->;
-};
+        adj {
+            display-name = "ADJ";
+            bindings = <
+                &mo TAB   &trans &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &trans &trans &kp BSPC
+                &kp LCTRL &trans &kp F4 &kp F5 &kp F6 &kp F11   &trans       &trans      &trans       &trans &trans &trans
+                &bt LSHFT &trans &kp F1 &kp F2 &kp F3 &kp F10   &trans       &trans      &trans       &trans &trans &trans
+                                   &kp LGUI &mo NAV &kp SPACE   &kp RET &mo 2 &kp RALT
+            >;
+        };
+        extra_1 {
+                status = "reserved";
+        };
 
-fn_layer {
-display-name = "Fun";
-// Function keys. Activated by holding MagicKey thumb (mo 2).
-// Right side exposes raw modifiers for Shift/Ctrl/Alt/Super + F-key combinations.
-// -----------------------------------------------------------------------
-// | F10 | F7  | F8  | F9  |  —  |   |  —  |  —  |  —  |  —  |  —  |
-// | F11 | F4  | F5  | F6  |  —  |   |  —  |RSft |RCtl |RAlt |RGui |
-// | F12 | F1  | F2  | F3  |  —  |   |  —  |  —  |  —  |  —  |  —  |
-//       | to(0) | SPACE | trans(MagicKey) | trans(NumSym) | BSPC | DEL |
-bindings = <
-&kp F10  &kp F7  &kp F8  &kp F9  &none   &none  &none               &none                 &none          &none
-&kp F11  &kp F4  &kp F5  &kp F6  &none   &none  &kp RIGHT_SHIFT     &kp RIGHT_CONTROL     &kp RIGHT_ALT  &kp RIGHT_GUI
-&kp F12  &kp F1  &kp F2  &kp F3  &none   &none  &none               &none                 &none          &none
-&to 0    &kp DE_SPACE    &trans  &trans  &kp BACKSPACE  &kp DEL
->;
-};
+        extra_2 {
+                status = "reserved";
+        };
 
-nav_sys_layer {
-display-name = "NavSys";
-// Navigation and system controls. Activated by holding Space thumb (mo 3).
-// Left: media, BT, RGB controls. Right: navigation keys.
-// Home row hold-taps: Prev=hold:Alt  VolDn=hold:Ctrl
-// MicMute = LGui+RAlt+K shortcut
-// CapsW = Caps Word, CapsL = Caps Lock
-// ** = tap-dance safety: single tap = nothing, double-tap = action
-// -----------------------------------------------------------------------
-// |BtClrAll**| Next | VolUp |RGB_OFF|StudioUnlk|   |PgUp | Home |  Up  | End  |BtClr** |
-// |  LGui    |Prev/A|VolDn/C| LSft  |    —     |   |PgDn | Left | Down | Rght |Reset** |
-// |  Boot**  | Play | Mute  |MicMute|    —     |   |CapsW|CapsL |PrtSc |  —   |Boot**  |
-//            | BT_PRV | BT_SEL 0 | BT_NXT |   |  —  |  —  | to(0) |
-bindings = <
-&td_bt_clr_all  &kp C_NEXT              &kp C_VOL_UP               &rgb_ug RGB_OFF   &studio_unlock   &kp PG_UP     &kp HOME   &kp UP    &kp END    &td_bt_clr
-&kp LEFT_GUI    &hml LEFT_ALT C_PREV    &hml LEFT_CONTROL C_VOL_DN &kp LEFT_SHIFT    &none            &kp PG_DN     &kp LEFT   &kp DOWN  &kp RIGHT  &td_reset
-&td_boot        &kp C_PP               &kp C_MUTE                  &kp LG(RA(K))     &none            &caps_word &kp CAPSLOCK  &kp PSCRN      &none      &td_boot
-&bt BT_PRV      &bt BT_SEL 0           &bt BT_NXT                  &none             &none            &to 0
->;
-};
-
-};
+        extra_3 {
+                status = "reserved";
+        };
+    };
 };
