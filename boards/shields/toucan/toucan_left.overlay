@@ -1,5 +1,13 @@
 #include "toucan.dtsi"
 
+/ {
+    aliases {
+        led-red = &led0;
+        led-green = &led1;
+        led-blue = &led2;
+    };
+};
+
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
