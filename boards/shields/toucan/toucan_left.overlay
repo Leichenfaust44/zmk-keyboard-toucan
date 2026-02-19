@@ -42,12 +42,13 @@ nice_view_spi: &spi0 {
 
 &kscan0 {
     col-gpios
+    // NOTE: These are the 5 remaining columns after removing the outermost pinky column.
+    // If your 5-col Toucan uses different GPIO pins, update them here.
     = <&gpio0 9 GPIO_ACTIVE_HIGH>
     , <&gpio0 4 GPIO_ACTIVE_HIGH>
     , <&gpio0 10 GPIO_ACTIVE_HIGH>
     , <&gpio0 5 GPIO_ACTIVE_HIGH>
     , <&gpio1 11 GPIO_ACTIVE_HIGH>
-    , <&gpio1 12 GPIO_ACTIVE_HIGH>
     ;
 };
 
