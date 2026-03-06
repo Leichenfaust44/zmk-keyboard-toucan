@@ -136,7 +136,7 @@ parse_config:
     '&mt DE_UNDER DE_MINUS': {t: '-', h: '_'}
     '&mt DE_EXCL DE_QMARK': {t: '?', h: '!'}
     # Thumb cluster hold-taps
-    '&space_nav 3 DE_SPACE': {t: '$$mdi:keyboard-space$$', h: 'NavSys', type: held}
+    '&space_nav 3 DE_SPACE': {t: '$$mdi:keyboard-space$$', h: 'Bridge', type: held}
     # Combo outputs — custom macros
     '&quote_pair': {t: '""', h: '←'}
     '&paren_pair': {t: '()', h: '←'}
