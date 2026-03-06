@@ -1,4 +1,4 @@
-layout: {zmk_keyboard: cantor, layout_name: five_col_layout}
+layout: {zmk_keyboard: toucan, layout_name: five_col_layout}
 layers:
   Gallium:
   - B
