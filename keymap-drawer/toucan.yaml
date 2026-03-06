@@ -32,7 +32,7 @@ layers:
   - {t: ., h: ':'}
   - {t: '-', h: _}
   - $$mdi:keyboard-esc$$
-  - {t: '$$mdi:keyboard-space$$', h: NavSys, type: held}
+  - {t: '$$mdi:keyboard-space$$', h: Bridge, type: held}
   - {t: ✦, h: Helm}
   - {t: №, h: Glyph}
   - $$mdi:backspace-outline$$

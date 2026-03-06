@@ -362,8 +362,9 @@ path.combo {
 <g transform="translate(285, 209) rotate(12.0)" class="key held keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
 <use href="#mdi:keyboard-space" xlink:href="#mdi:keyboard-space" x="-7" y="-7" height="14" width="14.0" class="key held tap glyph mdi:keyboard-space"/>
-<text x="0" y="24" class="key held hold">NavSys</text>
-</g>
+<a href="#Bridge">
+<text x="0" y="24" class="key held hold layer-activator">Bridge</text>
+</a></g>
 <g transform="translate(345, 226) rotate(24.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">✦</text>
