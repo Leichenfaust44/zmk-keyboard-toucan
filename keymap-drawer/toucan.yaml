@@ -108,9 +108,9 @@ layers:
   - ''
   - ''
   - {type: held}
-  - ''
-  - ''
-  - ''
+  - $$mdi:mouse-left-click$$
+  - $$mdi:mouse-right-click$$
+  - $$mdi:mouse-left-click-outline$$
   Bridge:
   - {h: '$$mdi:bluetooth-off$$'}
   - $$mdi:skip-next$$
@@ -147,7 +147,7 @@ layers:
   - BT ▶
   - ''
   - ''
-  - ''
+  - {t: Gallium, h: toggle}
 combos:
 - p: [11, 12]
   k: $$mdi:keyboard-tab$$
