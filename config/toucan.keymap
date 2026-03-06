@@ -59,16 +59,6 @@
                                    &kp LGUI &mo NAV &kp SPACE   &kp RET &mo 2 &kp RALT
             >;
         };
-        extra_1 {
-                status = "reserved";
-        };
 
-        extra_2 {
-                status = "reserved";
-        };
-
-        extra_3 {
-                status = "reserved";
-        };
     };
 };
