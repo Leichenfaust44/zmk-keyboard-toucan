@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "config/cantor.keymap"
+      - "config/toucan.keymap"
       - "keymap-drawer/keymap_drawer.yaml"
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: write
     with:
-      keymap_patterns: "config/cantor.keymap"
+      keymap_patterns: "config/toucan.keymap"
       config_path: "keymap-drawer/keymap_drawer.yaml"
       output_folder: "keymap-drawer"
       draw_args: "cantor:'--dts-layout boards/arm/toucan/toucan.dtsi --layout-name five_col_layout'"
