@@ -22,7 +22,7 @@ parse_config:
   hold_tap_labels:
     - space_nav
     - magic_key
-    - numsym_tap
+    - glyph_tap
   raw_binding_map:
     # Numbers
     '&kp DE_N0': '0'
