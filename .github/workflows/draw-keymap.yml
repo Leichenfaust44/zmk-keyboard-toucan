@@ -16,5 +16,5 @@ jobs:
       keymap_patterns: "config/toucan.keymap"
       config_path: "keymap-drawer/keymap_drawer.yaml"
       output_folder: "keymap-drawer"
-      draw_args: "toucan:'--dts-layout boards/shields/toucan/toucan.dtsi --layout-name 5-Col Layout'"
+      draw_args: "toucan:'--dts-layout boards/shields/toucan/toucan.dtsi --layout-name \"5-Col Layout\"'"
       amend_commit: false
