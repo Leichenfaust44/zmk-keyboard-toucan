@@ -1,1 +1,219 @@
+draw_config:
+  key_w: 60
+  key_h: 56
+  split_gap: 30.0
+  combo_w: 28
+  combo_h: 26
+  key_rx: 6.0
+  key_ry: 6.0
+  dark_mode: false
+  n_columns: 1
+  append_colon_to_layer_header: true
+  shrink_wide_legends: 7
+  style_layer_activators: true
+  footer_text: Created with <a href="https://github.com/caksoylar/keymap-drawer">Keymap Drawer</a>
 
+parse_config:
+  preprocess: true
+  zmk_additional_includes:
+    - "zmk-helpers/include"
+  zmk_remove_keycode_prefix:
+    - "DE_"
+  hold_tap_labels:
+    - space_nav
+    - magic_key
+    - numsym_tap
+  raw_binding_map:
+    # Numbers
+    '&kp DE_N0': '0'
+    '&kp DE_N1': '1'
+    '&kp DE_N2': '2'
+    '&kp DE_N3': '3'
+    '&kp DE_N4': '4'
+    '&kp DE_N5': '5'
+    '&kp DE_N6': '6'
+    '&kp DE_N7': '7'
+    '&kp DE_N8': '8'
+    '&kp DE_N9': '9'
+    # hml — Gallium layer (show tap only)
+    '&hml LEFT_GUI N': 'N'
+    '&hml LEFT_ALT R': 'R'
+    '&hml LEFT_CONTROL T': 'T'
+    '&hml LEFT_SHIFT S': 'S'
+    # hmr — Gallium layer (show tap only)
+    '&hmr RIGHT_SHIFT H': 'H'
+    '&hmr RIGHT_CONTROL A': 'A'
+    '&hmr RIGHT_ALT E': 'E'
+    '&hmr RIGHT_GUI I': 'I'
+    # hml — NumSym layer (show tap only)
+    '&hml LEFT_GUI DE_N0': '0'
+    '&hml LEFT_ALT DE_N4': '4'
+    '&hml LEFT_CONTROL DE_N5': '5'
+    '&hml LEFT_SHIFT DE_N6': '6'
+    # hmr — NumSym layer (show tap only)
+    '&hmr RIGHT_SHIFT DE_RBRC': '}'
+    '&hmr RIGHT_CONTROL DE_CARET': '^'
+    '&hmr RIGHT_ALT DE_GRAVE': '`'
+    '&hmr RIGHT_GUI DE_TILDE': '~'
+    # Letters (Y/Z swapped for Swiss German)
+    '&kp DE_Y': 'Y'
+    '&kp DE_Z': 'Z'
+    # Common symbols
+    '&kp DE_SPACE': '$$mdi:keyboard-space$$'
+    '&kp DE_MINUS': '-'
+    '&kp DE_UNDER': '_'
+    '&kp DE_UNDERSCORE': '_'
+    '&kp DE_DOT': '.'
+    '&kp DE_PERIOD': '.'
+    '&kp DE_COMMA': ','
+    '&kp DE_COLON': ':'
+    '&kp DE_SEMI': ';'
+    '&kp DE_SEMICOLON': ';'
+    '&kp DE_FSLH': '/'
+    '&kp DE_SLASH': '/'
+    '&kp DE_BSLH': '\'
+    '&kp DE_BACKSLASH': '\'
+    '&kp DE_QMARK': '?'
+    '&kp DE_QUESTION': '?'
+    '&kp DE_EXCL': '!'
+    '&kp DE_EXCLAMATION': '!'
+    '&kp DE_LPAR': '('
+    '&kp DE_LEFT_PARENTHESIS': '('
+    '&kp DE_RPAR': ')'
+    '&kp DE_RIGHT_PARENTHESIS': ')'
+    '&kp DE_LBKT': '['
+    '&kp DE_LEFT_BRACKET': '['
+    '&kp DE_RBKT': ']'
+    '&kp DE_RIGHT_BRACKET': ']'
+    '&kp DE_LBRC': '{'
+    '&kp DE_LEFT_BRACE': '{'
+    '&kp DE_RBRC': '}'
+    '&kp DE_RIGHT_BRACE': '}'
+    '&kp DE_LT': '<'
+    '&kp DE_LESS_THAN': '<'
+    '&kp DE_GT': '>'
+    '&kp DE_GREATER_THAN': '>'
+    '&kp DE_PIPE': '|'
+    '&kp DE_AMPS': '&'
+    '&kp DE_AMPERSAND': '&'
+    '&kp DE_ASTRK': '*'
+    '&kp DE_ASTERISK': '*'
+    '&kp DE_PLUS': '+'
+    '&kp DE_EQUAL': '='
+    '&kp DE_AT': '@'
+    '&kp DE_AT_SIGN': '@'
+    '&kp DE_HASH': '#'
+    '&kp DE_POUND': '#'
+    '&kp DE_DLLR': '$'
+    '&kp DE_DOLLAR': '$'
+    '&kp DE_PRCNT': '%'
+    '&kp DE_PERCENT': '%'
+    '&kp DE_CARET': '^'
+    '&kp DE_GRAVE': '`'
+    '&kp DE_TILDE': '~'
+    '&kp DE_ACUTE': '´'
+    '&kp DE_SECT': '§'
+    '&kp DE_SECTION': '§'
+    '&kp DE_DEG': '°'
+    '&kp DE_DEGREE': '°'
+    '&kp DE_EURO': '€'
+    '&kp DE_DQT': '"'
+    '&kp DE_DOUBLE_QUOTES': '"'
+    '&kp DE_SQT': "'"
+    '&kp DE_APOS': "'"
+    '&kp DE_SINGLE_QUOTE': "'"
+    '&kp DE_A_UMLAUT': 'ä'
+    '&kp DE_O_UMLAUT': 'ö'
+    '&kp DE_U_UMLAUT': 'ü'
+    '&kp DE_A_GRAVE': 'à'
+    '&kp DE_E_GRAVE': 'è'
+    '&kp DE_E_ACUTE': 'é'
+    '&kp DE_C_CEDILLA': 'ç'
+    # mt hold-tap keys (bot row)
+    '&mt DE_SEMI DE_COMMA': {t: ',', h: ';'}
+    '&mt DE_SEMICOLON DE_COMMA': {t: ',', h: ';'}
+    '&mt DE_COLON DE_DOT': {t: '.', h: ':'}
+    '&mt DE_UNDER DE_MINUS': {t: '-', h: '_'}
+    '&mt DE_EXCL DE_QMARK': {t: '?', h: '!'}
+    # Thumb cluster hold-taps
+    '&space_nav 3 DE_SPACE': {t: '$$mdi:keyboard-space$$', h: 'NavSys', type: held}
+    # Combo outputs — custom macros
+    '&quote_pair': {t: '""', h: '←'}
+    '&paren_pair': {t: '()', h: '←'}
+    # Combo outputs — clipboard
+    '&kp LC(C)': '$$mdi:content-copy$$'
+    '&kp LC(V)': '$$mdi:content-paste$$'
+    '&kp LC(X)': '$$mdi:content-cut$$'
+    # Tap-dance safety wrappers (single tap = nothing, double tap = action)
+    '&td_bt_clr_all': {t: '', h: '$$mdi:bluetooth-off$$'}
+    '&td_bt_clr': {t: '', h: '$$mdi:bluetooth-off$$'}
+    '&td_reset': {t: '', h: 'Reset'}
+    '&td_boot': {t: '', h: 'Boot'}
+    # Navigation
+    '&kp LEFT': '$$mdi:arrow-left$$'
+    '&kp RIGHT': '$$mdi:arrow-right$$'
+    '&kp UP': '$$mdi:arrow-up$$'
+    '&kp DOWN': '$$mdi:arrow-down$$'
+    '&kp HOME': '$$mdi:chevron-triple-left$$'
+    '&kp END': '$$mdi:chevron-triple-right$$'
+    '&kp PG_UP': '$$mdi:chevron-double-up$$'
+    '&kp PG_DN': '$$mdi:chevron-double-down$$'
+    '&kp BACKSPACE': '$$mdi:backspace-outline$$'
+    '&kp BSPC': '$$mdi:backspace-outline$$'
+    '&kp DEL': '$$mdi:backspace-reverse-outline$$'
+    '&kp DELETE': '$$mdi:backspace-reverse-outline$$'
+    '&kp ESC': '$$mdi:keyboard-esc$$'
+    '&kp ESCAPE': '$$mdi:keyboard-esc$$'
+    '&kp TAB': '$$mdi:keyboard-tab$$'
+    '&kp RET': '$$mdi:keyboard-return$$'
+    '&kp ENTER': '$$mdi:keyboard-return$$'
+    '&kp PSCRN': '$$mdi:monitor-screenshot$$'
+    # Modifiers (raw, for Fn layer right side)
+    '&kp LEFT_GUI': '$$mdi:apple-keyboard-command$$'
+    '&kp RIGHT_GUI': '$$mdi:apple-keyboard-command$$'
+    '&kp LEFT_ALT': '$$mdi:apple-keyboard-option$$'
+    '&kp RIGHT_ALT': '$$mdi:apple-keyboard-option$$'
+    '&kp LEFT_CONTROL': '$$mdi:apple-keyboard-control$$'
+    '&kp RIGHT_CONTROL': '$$mdi:apple-keyboard-control$$'
+    '&kp LEFT_SHIFT': '$$mdi:apple-keyboard-shift$$'
+    '&kp RIGHT_SHIFT': '$$mdi:apple-keyboard-shift$$'
+    # Media
+    '&kp C_MUTE': '$$mdi:volume-mute$$'
+    '&kp C_PP': '$$mdi:play-pause$$'
+    '&kp C_NEXT': '$$mdi:skip-next$$'
+    '&kp C_PREV': '$$mdi:skip-previous$$'
+    '&kp C_VOL_UP': '$$mdi:volume-high$$'
+    '&kp C_VOL_DN': '$$mdi:volume-low$$'
+    # Bluetooth
+    '&bt BT_CLR': '$$mdi:bluetooth-off$$'
+    '&bt BT_CLR_ALL': '$$mdi:bluetooth-off$$'
+    '&bt BT_SEL 0': 'BT 1'
+    '&bt BT_PRV': 'BT ◀'
+    '&bt BT_NXT': 'BT ▶'
+    # Mouse buttons
+    '&mkp LCLK': '$$mdi:mouse-left-click$$'
+    '&mkp RCLK': '$$mdi:mouse-right-click$$'
+    '&mkp MCLK': '$$mdi:mouse-left-click-outline$$'
+    # Mouse scroll
+    '&msc SCRL_UP': '$$mdi:arrow-up-circle-outline$$'
+    '&msc SCRL_DOWN': '$$mdi:arrow-down-circle-outline$$'
+    # System
+    '&rgb_ug RGB_OFF': '$$mdi:led-off$$'
+    '&studio_unlock': '$$mdi:lock-open-variant-outline$$'
+    '&caps_word': 'CapsW'
+    '&kp CAPSLOCK': 'CapsL'
+    '&kp LG(RA(K))': 'MicMute'
+    '&key_repeat': '↺'
+    '&magic_key_tap': '✦'
+    '&num_word': '№'
+  zmk_keycode_map:
+    N0: '0'
+    N1: '1'
+    N2: '2'
+    N3: '3'
+    N4: '4'
+    N5: '5'
+    N6: '6'
+    N7: '7'
+    N8: '8'
+    N9: '9'
