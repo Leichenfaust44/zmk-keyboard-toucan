@@ -5,12 +5,12 @@
  *
  * Gallium v2 layout (customized) with home row mods
  * Swiss German (DE-CH) keyboard layout
- * Toucan Keyboard — 5-col layout (identical key positions to Piantor Pro BT)
+ * Toucan Keyboard — 5-col layout
  *
  * Layer order:
  *   0 = Gallium (default)
  *   1 = Glyph
- *   2 = Helm      ← also activated momentarily by trackpad touch (touch_processor → mo 2)
+ *   2 = Helm      ← activated by MagicKey hold OR trackpad touch (touch_processor → mo 2)
  *   3 = Bridge    ← trackpad acts as scroll wheel on this layer
  *
  * ============================================================
@@ -20,21 +20,30 @@
  *   Home row: N  R  T  S  G  |  P  H  A  E  I
  *   Bot row:  X  Q  M  W  Z  |  K  F  ,/; ./: -/_
  *
- *   Home row mods (cross-hand activation only):
- *     Left:  N=Super  R=Alt  T=Ctrl  S=Shift
- *     Right: H=Shift  A=Ctrl E=Alt   I=Super
+ *   Hold-tap keys on the base layer:
+ *     ? → !   ,  → ;   . → :   - → _
+ *
+ *   Home row mods (cross-hand activation only, balanced flavor):
+ *     Left:  N=Super(slow)  R=Alt(slow)  T=Ctrl(slow)  S=Shift(fast)
+ *     Right: H=Shift(fast)  A=Ctrl(slow) E=Alt(slow)   I=Super(slow)
  *
  *   Thumbs:
- *     ESC | Space(hold=Bridge/3) | MagicKey(hold=Helm/2) | Glyph | BSPC | DEL
+ *     ESC | Space(hold=Bridge/3) | SmartShift | MagicKey(hold=Helm/2) | BSPC+DEL | Glyph
+ *
+ *   SmartShift: tap = sticky-shift, hold = shift, double-tap = Caps Word
+ *   BSPC+DEL:   tap = BSPC, Shift+tap = DEL
  *
  * ============================================================
  * Glyph (Layer 1): Numbers and symbols
  * ============================================================
+ *   Activated by: tap Glyph thumb (num_word) or hold Glyph thumb (momentary)
+ *
  *   Top row:  —  7  8  9  —  |  [  ]  <  >  |
  *   Home row: 0  4  5  6  —  |  {  }  ^  `  ~
  *   Bot row:  .  1  2  3  —  |  ´  §  °  —  —
  *
- *   Thumbs: to(0) | SPACE | — | to(0) | BSPC | DEL
+ *   Home row mods mirror base layer.
+ *   Thumbs: to(0) | SPACE | SmartShift | to(0) | BSPC+DEL | num_word
  *
  * ============================================================
  * Helm (Layer 2): Function keys and mouse
@@ -45,18 +54,20 @@
  *   Home row: F11  F4  F5  F6  —  |  —   RSft  RCtl  RAlt  RGui
  *   Bot row:  F12  F1  F2  F3  —  |  —   —     —     —     —
  *
- *   Thumbs: — | — | — | LClick | RClick | MClick
+ *   Thumbs: — | — | — | — | LClick | RClick | MClick
  *
  * ============================================================
  * Bridge (Layer 3): Navigation and system controls
  * ============================================================
  *   Activated by: hold Space thumb
- *   Trackpad acts as scroll wheel on this layer (toucan.dtsi scroller → layers = <3>).
+ *   Trackpad acts as scroll wheel on this layer.
  *
  *   Top row:  BtClrAll**  Next  VolUp   RGB_OFF  StudioUnlk  |  PgUp  Home  Up    End    BtClr**
  *   Home row: —           Prev  VolDn   —        —           |  PgDn  Left  Down  Right  Reset**
  *   Bot row:  Boot**      Play  Mute    MicMute  —           |  CapsW CapsL PrtSc —      Boot**
  *
+ *   MicMute = LGui+RAlt+K shortcut
+ *   ** = tap-dance safety: single tap = nothing, double-tap = action
  *   Thumbs: BT_PRV | — | BT_NXT | — | — | to(0)
  */
 
@@ -74,105 +85,119 @@
 #include "zmk-helpers/helper.h"
 
 &num_word {
-continue-list = <BSPC DEL DOT PLUS MINUS ASTRK FSLH EQUAL SPACE>;
+    continue-list = <BSPC DEL DOT PLUS MINUS ASTRK FSLH EQUAL SPACE>;
 };
 
 &sl {
-release-after-ms = <5000>;
-ignore-modifiers;
+    release-after-ms = <5000>;
+    ignore-modifiers;
 };
 
 &sk {
-release-after-ms = <5000>;
-quick-release;
+    release-after-ms = <5000>;
+    quick-release;
 };
 
 &mt {
-tapping-term-ms = <300>;
-quick-tap-ms = <0>;
-require-prior-idle-ms = <175>;
-flavor = "tap-preferred";
-hold-trigger-on-release;
+    tapping-term-ms = <300>;
+    quick-tap-ms = <0>;
+    require-prior-idle-ms = <175>;
+    flavor = "tap-preferred";
+    hold-trigger-on-release;
 };
 
 / {
-chosen {
-zmk,physical-layout = &five_col_layout;
-};
+    chosen {
+        zmk,physical-layout = &five_col_layout;
+    };
 };
 
 / {
-behaviors {
-#include "toucan_behaviors.dtsi"
-};
+    behaviors {
+        #include "toucan_behaviors.dtsi"
+    };
 
-#include "toucan_combos.dtsi"
+    #include "toucan_combos.dtsi"
 
-keymap {
-compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-default_layer {
-display-name = "Gallium";
-// -----------------------------------------------------------------------
-// |  B  |  L  |  D  |  C  |  V  |   |  J  |  Y  |  O  |  U  | ?/! |
-// | N/Gu|R/Alt|T/Ctl|S/Sft|  G  |   |  P  |H/Sft|A/Ctl|E/Alt| I/Gu|
-// |  X  |  Q  |  M  |  W  |  Z  |   |  K  |  F  | ,/; | ./: | -/_ |
-//       | ESC | Space(Bridge) | MagicKey(Helm) | Glyph | BSPC | DEL |
-bindings = <
-&kp B            &kp L                &kp D                &kp C               &kp V      &kp J   &kp DE_Y            &kp O                &kp U               &mt DE_EXCL DE_QMARK
-&hml LEFT_GUI N  &hml LEFT_ALT R      &hml LEFT_CONTROL T  &hml LEFT_SHIFT S   &kp G      &kp P   &hmr RIGHT_SHIFT H  &hmr RIGHT_CONTROL A &hmr RIGHT_ALT E    &hmr RIGHT_GUI I
-&kp X            &kp Q                &kp M                &kp W               &kp DE_Z   &kp K   &kp F               &mt DE_SEMI DE_COMMA &mt DE_COLON DE_DOT &mt DE_UNDER DE_MINUS
-                 &kp ESCAPE           &space_nav 3 DE_SPACE &magic_key 2 0      &glyph_tap 1 1    &kp BACKSPACE        &kp DEL
->;
-};
+        default_layer {
+            display-name = "Gallium";
+            // Home row mods — Left: N=Super(slow) R=Alt(slow) T=Ctrl(slow) S=Shift(fast)
+            //               — Right: H=Shift(fast) A=Ctrl(slow) E=Alt(slow) I=Super(slow)
+            // -----------------------------------------------------------------------
+            // |  B  |  L  |  D  |  C  |  V  |   |  J  |  Y  |  O  |  U  | ?/! |
+            // |N/Gu↓|R/Al↓|T/Ct↓|S/Sf↑|  G  |   |  P  |H/Sf↑|A/Ct↓|E/Al↓|I/Gu↓|
+            // |  X  |  Q  |  M  |  W  |  Z  |   |  K  |  F  | ,/; | ./: | -/_ |
+            //       | ESC | Space(Bridge) | SmartShift | MagicKey(Helm) | BSPC+DEL | Glyph |
+            // ↑ = fast (hml_shift / hmr_shift)
+            // ↓ = slow (hml_slow  / hmr_slow)
 
-num_sym_layer {
-display-name = "Glyph";
-// -----------------------------------------------------------------------
-// |  —  |  7  |  8  |  9  |  —  |   |  [  |  ]  |  <  |  >  |  |  |
-// |0/Gu |4/Alt|5/Ctl|6/Sft|  —  |   |  {  |}/Sft|^/Ctl|`/Alt|~/Gu |
-// |  .  |  1  |  2  |  3  |  —  |   |  ´  |  §  |  °  |  —  |  —  |
-//       | to(0) | SPACE | — | to(0) | BSPC | DEL |
-bindings = <
-&none                    &kp DE_N7            &kp DE_N8               &kp DE_N9              &none   &kp DE_LBKT   &kp DE_RBKT              &kp DE_LT                   &kp DE_GT               &kp DE_PIPE
-&hml LEFT_GUI DE_N0      &hml LEFT_ALT DE_N4  &hml LEFT_CONTROL DE_N5 &hml LEFT_SHIFT DE_N6  &none   &kp DE_LBRC   &hmr RIGHT_SHIFT DE_RBRC &hmr RIGHT_CONTROL DE_CARET &hmr RIGHT_ALT DE_GRAVE &hmr RIGHT_GUI DE_TILDE
-&kp DE_DOT               &kp DE_N1            &kp DE_N2               &kp DE_N3              &none   &kp DE_ACUTE  &kp DE_SECT              &kp DE_DEG                  &none                   &none
-                         &to 0                &kp DE_SPACE            &none                  &to 0   &kp BACKSPACE &kp DEL
->;
-};
+            bindings = <
+                &kp B                    &kp L                   &kp D                      &kp C                     &kp V      &kp J    &kp DE_Y                  &kp O                      &kp U                   &mt DE_EXCL DE_QMARK
+                &hml_slow LEFT_GUI N     &hml_slow LEFT_ALT R    &hml_slow LEFT_CONTROL T   &hml_shift LEFT_SHIFT S   &kp G      &kp P    &hmr_shift RIGHT_SHIFT H  &hmr_slow RIGHT_CONTROL A  &hmr_slow RIGHT_ALT E   &hmr_slow RIGHT_GUI I
+                &kp X                    &kp Q                   &kp M                      &kp W                     &kp DE_Z   &kp K    &kp F                     &mt DE_SEMI DE_COMMA       &mt DE_COLON DE_DOT     &mt DE_UNDER DE_MINUS
+                                         &kp ESCAPE              &space_nav 3 DE_SPACE      &shift_morph LSHIFT 0     &magic_key 2 0      &bspc_del                 &glyph_tap 1 1
+            >;
+        };
 
-fn_layer {
-display-name = "Helm";
-// Activated by: hold MagicKey thumb OR trackpad touch (touch_processor → mo 2).
-// Mouse clicks on thumb cluster — reachable while moving the trackpad.
-// -----------------------------------------------------------------------
-// | F10 | F7  | F8  | F9  |  —  |   |  —  |  —  |  —  |  —  |  —  |
-// | F11 | F4  | F5  | F6  |  —  |   |  —  |RSft |RCtl |RAlt |RGui |
-// | F12 | F1  | F2  | F3  |  —  |   |  —  |  —  |  —  |  —  |  —  |
-//       |  —  |  —  |  —  | LClick | RClick | MClick |
-bindings = <
-&kp F10  &kp F7  &kp F8  &kp F9  &none   &none    &none              &none                 &none          &none
-&kp F11  &kp F4  &kp F5  &kp F6  &none   &none  &kp RIGHT_SHIFT    &kp RIGHT_CONTROL     &kp RIGHT_ALT  &kp RIGHT_GUI
-&kp F12  &kp F1  &kp F2  &kp F3  &none   &none           &none              &none                 &none          &none
-         &none   &none   &none   &mkp LCLK  &mkp RCLK  &mkp MCLK
->;
-};
+        num_sym_layer {
+            display-name = "Glyph";
+            // Numbers and symbols. Home row mods mirror base layer.
+            // num_word auto-exits on non-number/symbol keys.
+            // -----------------------------------------------------------------------
+            // |  —  |  7  |  8  |  9  |  —  |   |  [  |  ]  |  <  |  >  |  |  |
+            // |0/Gu↓|4/Al↓|5/Ct↓|6/Sf↑|  —  |   |  {  |}/ ↑ |^/Ct↓|`/Al↓|~/Gu↓|
+            // |  .  |  1  |  2  |  3  |  —  |   |  ´  |  §  |  °  |  —  |  —  |
+            //       | to(0) | SPACE | SmartShift | to(0) | BSPC+DEL | num_word |
 
-nav_sys_layer {
-display-name = "Bridge";
-// Trackpad acts as scroll wheel on this layer (toucan.dtsi scroller → layers = <3>).
-// -----------------------------------------------------------------------
-// |BtClrAll**| Next | VolUp |RGB_OFF|StudioUnlk|   |PgUp | Home |  Up  | End  |BtClr** |
-// |  —       | Prev |VolDn  |  —    |    —     |   |PgDn | Left | Down | Rght |Reset** |
-// |  Boot**  | Play | Mute  |MicMute|    —     |   |CapsW|CapsL |PrtSc |  —   |Boot**  |
-//            | BT_PRV |  —  | BT_NXT |   |  —  |  —  | to(0) |
-bindings = <
-&td_bt_clr_all  &kp C_NEXT   &kp C_VOL_UP   &rgb_ug RGB_OFF  &studio_unlock   &kp PG_UP   &kp HOME      &kp UP    &kp END    &td_bt_clr
-&none           &kp C_PREV   &kp C_VOL_DN   &none            &none            &kp PG_DN   &kp LEFT      &kp DOWN  &kp RIGHT  &td_reset
-&td_boot        &kp C_PP     &kp C_MUTE     &kp LG(RA(K))    &none            &caps_word  &kp CAPSLOCK  &kp PSCRN &none      &td_boot
-                &bt BT_PRV   &none          &bt BT_NXT        &none           &none        &to 0
->;
-};
+            bindings = <
+                &none                        &kp DE_N7               &kp DE_N8                  &kp DE_N9                     &none      &kp DE_LBKT   &kp DE_RBKT               &kp DE_LT                     &kp DE_GT               &kp DE_PIPE
+                &hml_slow LEFT_GUI DE_N0     &hml_slow LEFT_ALT DE_N4  &hml_slow LEFT_CONTROL DE_N5  &hml_shift LEFT_SHIFT DE_N6  &none      &kp DE_LBRC   &hmr_shift RIGHT_SHIFT DE_RBRC  &hmr_slow RIGHT_CONTROL DE_CARET  &hmr_slow RIGHT_ALT DE_GRAVE  &hmr_slow RIGHT_GUI DE_TILDE
+                &kp DE_DOT                   &kp DE_N1               &kp DE_N2                  &kp DE_N3                     &none      &kp DE_ACUTE  &kp DE_SECT               &kp DE_DEG                    &none                   &none
+                                             &to 0                   &kp DE_SPACE               &shift_morph LSHIFT 0         &to 0      &bspc_del     &num_word 1
+            >;
+        };
 
-};
+        fn_layer {
+            display-name = "Helm";
+            // Function keys. Activated by MagicKey hold OR trackpad touch (touch_processor → mo 2).
+            // Mouse clicks on thumb cluster — reachable while moving the trackpad.
+            // -----------------------------------------------------------------------
+            // | F10 | F7  | F8  | F9  |  —  |   |  —  |  —  |  —  |  —  |  —  |
+            // | F11 | F4  | F5  | F6  |  —  |   |  —  |RSft |RCtl |RAlt |RGui |
+            // | F12 | F1  | F2  | F3  |  —  |   |  —  |  —  |  —  |  —  |  —  |
+            //       |  —  |  —  |  —  |  —  | LClick | RClick | MClick |
+
+            bindings = <
+                &kp F10  &kp F7  &kp F8  &kp F9  &none   &none     &none              &none                 &none          &none
+                &kp F11  &kp F4  &kp F5  &kp F6  &none   &none     &kp RIGHT_SHIFT    &kp RIGHT_CONTROL     &kp RIGHT_ALT  &kp RIGHT_GUI
+                &kp F12  &kp F1  &kp F2  &kp F3  &none   &none     &none              &none                 &none          &none
+                         &none   &none   &none   &none   &mkp LCLK &mkp RCLK          &mkp MCLK
+            >;
+        };
+
+        nav_sys_layer {
+            display-name = "Bridge";
+            // Navigation and system controls. Activated by holding Space (mo 3).
+            // Trackpad acts as scroll wheel on this layer (toucan.dtsi scroller → layers = <3>).
+            // MicMute = LGui+RAlt+K shortcut
+            // CapsW = Caps Word, CapsL = Caps Lock
+            // ** = tap-dance safety: single tap = nothing, double-tap = action
+            // -----------------------------------------------------------------------
+            // |BtClrAll**| Next | VolUp |RGB_OFF|StudioUnlk|   |PgUp | Home |  Up  | End  |BtClr** |
+            // |  —       | Prev |VolDn  |  —    |    —     |   |PgDn | Left | Down | Rght |Reset** |
+            // |  Boot**  | Play | Mute  |MicMute|    —     |   |CapsW|CapsL |PrtSc |  —   |Boot**  |
+            //            | BT_PRV |  —  | BT_NXT |   |  —  |  —  | to(0) |
+
+            bindings = <
+                &td_bt_clr_all  &kp C_NEXT   &kp C_VOL_UP   &rgb_ug RGB_OFF  &studio_unlock   &kp PG_UP   &kp HOME      &kp UP    &kp END    &td_bt_clr
+                &none           &kp C_PREV   &kp C_VOL_DN   &none            &none            &kp PG_DN   &kp LEFT      &kp DOWN  &kp RIGHT  &td_reset
+                &td_boot        &kp C_PP     &kp C_MUTE     &kp LG(RA(K))    &none            &caps_word  &kp CAPSLOCK  &kp PSCRN &none      &td_boot
+                                &bt BT_PRV   &none          &bt BT_NXT        &none           &none        &to 0
+            >;
+        };
+
+    };
 };
