@@ -155,7 +155,7 @@
             bindings = <
                 &none                        &kp DE_N7               &kp DE_N8                  &kp DE_N9                     &none      &kp DE_LBKT   &kp DE_RBKT               &kp DE_LT                     &kp DE_GT               &kp DE_PIPE
                 &hml_slow LEFT_GUI DE_N0     &hml_slow LEFT_ALT DE_N4  &hml_slow LEFT_CONTROL DE_N5  &hml_shift LEFT_SHIFT DE_N6  &none      &kp DE_LBRC   &hmr_shift RIGHT_SHIFT DE_RBRC  &hmr_slow RIGHT_CONTROL DE_CARET  &hmr_slow RIGHT_ALT DE_GRAVE  &hmr_slow RIGHT_GUI DE_TILDE
-                &kp DE_DOT                   &kp DE_N1               &kp DE_N2                  &kp DE_N3                     &none      &kp DE_ACUTE  &kp DE_SECT               &kp DE_DEG                    &none                   &none
+                &kp DE_DOT                   &kp DE_N1               &kp DE_N2                  &kp DE_N3                     &none      &kp DE_GRAVE  &kp DE_ACUTE              &kp DE_SECT                   &kp DE_DEG              &none
                                              &to 0                   &kp DE_SPACE               &shift_morph LSHIFT 0         &to 0      &bspc_del     &num_word 1
             >;
         };
@@ -188,13 +188,13 @@
             // -----------------------------------------------------------------------
             // |BtClrAll**| Next | VolUp |RGB_OFF|StudioUnlk|   |PgUp | Home |  Up  | End  |BtClr** |
             // |  —       | Prev |VolDn  |  —    |    —     |   |PgDn | Left | Down | Rght |Reset** |
-            // |  Boot**  | Play | Mute  |MicMute|    —     |   |CapsW|CapsL |PrtSc |  —   |Boot**  |
+            // |  Boot**  | Play | Mute  |MicMute|    —     |   |CapsL|  —   |PrtSc |  —   |Boot**  |
             //            | BT_PRV |  —  | BT_NXT |   |  —  |  —  | to(0) |
 
             bindings = <
                 &td_bt_clr_all  &kp C_NEXT   &kp C_VOL_UP   &rgb_ug RGB_OFF  &studio_unlock   &kp PG_UP   &kp HOME      &kp UP    &kp END    &td_bt_clr
                 &none           &kp C_PREV   &kp C_VOL_DN   &none            &none            &kp PG_DN   &kp LEFT      &kp DOWN  &kp RIGHT  &td_reset
-                &td_boot        &kp C_PP     &kp C_MUTE     &kp LG(RA(K))    &none            &caps_word  &kp CAPSLOCK  &kp PSCRN &none      &td_boot
+                &td_boot        &kp C_PP     &kp C_MUTE     &kp LG(RA(K))    &none            &kp CAPSLOCK  &none         &kp PSCRN &none      &td_boot
                                 &bt BT_PRV   &none          &bt BT_NXT        &none           &none        &to 0
             >;
         };
