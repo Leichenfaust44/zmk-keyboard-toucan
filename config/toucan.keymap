@@ -127,17 +127,17 @@
             // Home row mods — Left: N=Super(slow) R=Alt(slow) T=Ctrl(slow) S=Shift(fast)
             //               — Right: H=Shift(fast) A=Ctrl(slow) E=Alt(slow) I=Super(slow)
             // -----------------------------------------------------------------------
-            // |  B  |  L  |  D  |  C  |  V  |   |  J  |  Y  |  O  |  U  | ?/! |
-            // |N/Gu↓|R/Al↓|T/Ct↓|S/Sf↑|  G  |   |  P  |H/Sf↑|A/Ct↓|E/Al↓|I/Gu↓|
-            // |  X  |  Q  |  M  |  W  |  Z  |   |  K  |  F  | ,/; | ./: | -/_ |
+            // |  B  |  L  |  D  |  C  |  V  |   |  J  |  F  |  O  |  U  | ?/! |
+            // |N/Gu↓|R/Al↓|T/Ct↓|S/Sf↑|  G  |   |  Y  |H/Sf↑|A/Ct↓|E/Al↓|I/Gu↓|
+            // |  X  |  Q  |  M  |  W  |  Z  |   |  K  |  P  | ,/; | ./: | -/_ |
             //       | ESC | Space(Bridge) | SmartShift | MagicKey(Helm) | BSPC+DEL | Glyph |
             // ↑ = fast (hml_shift / hmr_shift)
             // ↓ = slow (hml_slow  / hmr_slow)
 
             bindings = <
-                &kp B                    &kp L                   &kp D                      &kp C                     &kp V      &kp J    &kp DE_Y                  &kp O                      &kp U                   &mt DE_EXCL DE_QMARK
-                &hml_slow LEFT_GUI N     &hml_slow LEFT_ALT R    &hml_slow LEFT_CONTROL T   &hml_shift LEFT_SHIFT S   &kp G      &kp P    &hmr_shift RIGHT_SHIFT H  &hmr_slow RIGHT_CONTROL A  &hmr_slow RIGHT_ALT E   &hmr_slow RIGHT_GUI I
-                &kp X                    &kp Q                   &kp M                      &kp W                     &kp DE_Z   &kp K    &kp F                     &mt DE_SEMI DE_COMMA       &mt DE_COLON DE_DOT     &mt DE_UNDER DE_MINUS
+                &kp B                    &kp L                   &kp D                      &kp C                     &kp V      &kp J    &kp F                  &kp O                      &kp U                   &mt DE_EXCL DE_QMARK
+                &hml_slow LEFT_GUI N     &hml_slow LEFT_ALT R    &hml_slow LEFT_CONTROL T   &hml_shift LEFT_SHIFT S   &kp G      &kp DE_Y    &hmr_shift RIGHT_SHIFT H  &hmr_slow RIGHT_CONTROL A  &hmr_slow RIGHT_ALT E   &hmr_slow RIGHT_GUI I
+                &kp X                    &kp Q                   &kp M                      &kp W                     &kp DE_Z   &kp K    &kp P                     &mt DE_SEMI DE_COMMA       &mt DE_COLON DE_DOT     &mt DE_UNDER DE_MINUS
                                          &kp ESCAPE              &space_nav 3 DE_SPACE      &shift_morph LSHIFT 0     &magic_key 2 0      &bspc_del                 &glyph_tap 1 1
             >;
         };
