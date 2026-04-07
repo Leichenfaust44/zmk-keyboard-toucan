@@ -4,7 +4,7 @@ Custom ZMK firmware for the [beekeeb Toucan Keyboard](https://beekeeb.com/toucan
 
 This config uses the **5-col layout** (outer pinky columns unused), making key positions identical to the [Piantor Pro BT](https://github.com/Leichenfaust44/zmk-config) config for easy cross-board maintenance.
 
-[![Keymap]((https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/toucan.svg)](https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/toucan.svg)
+[!\[Keymap](https://github.com/Leichenfaust44/zmk-keyboard-toucan/raw/main/keymap-drawer/toucan.svg)](https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/toucan.svg)
 
 \---
 
