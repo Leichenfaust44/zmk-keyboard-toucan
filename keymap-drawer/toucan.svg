@@ -257,7 +257,7 @@ path.combo {
 </g>
 <g transform="translate(476, 41)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">F</text>
+<text x="0" y="0" class="key tap">Y</text>
 </g>
 <g transform="translate(532, 35)" class="key keypos-7">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -294,7 +294,7 @@ path.combo {
 </g>
 <g transform="translate(420, 97)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Y</text>
+<text x="0" y="0" class="key tap">P</text>
 </g>
 <g transform="translate(476, 97)" class="key keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -338,7 +338,7 @@ path.combo {
 </g>
 <g transform="translate(476, 153)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">P</text>
+<text x="0" y="0" class="key tap">F</text>
 </g>
 <g transform="translate(532, 147)" class="key keypos-27">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -818,18 +818,18 @@ path.combo {
 </g>
 <g transform="translate(345, 226) rotate(24.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#mdi:mouse-left-click-outline" xlink:href="#mdi:mouse-left-click-outline" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-left-click-outline"/>
 </g>
 <g transform="translate(439, 226) rotate(-24.0)" class="key held keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
-<use href="#mdi:mouse-left-click" xlink:href="#mdi:mouse-left-click" x="-7" y="-7" height="14" width="14.0" class="key held tap glyph mdi:mouse-left-click"/>
 </g>
 <g transform="translate(499, 209) rotate(-12.0)" class="key keypos-34">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:mouse-right-click" xlink:href="#mdi:mouse-right-click" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-right-click"/>
+<use href="#mdi:mouse-left-click" xlink:href="#mdi:mouse-left-click" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-left-click"/>
 </g>
 <g transform="translate(560, 203)" class="key keypos-35">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:mouse-left-click-outline" xlink:href="#mdi:mouse-left-click-outline" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-left-click-outline"/>
+<use href="#mdi:mouse-right-click" xlink:href="#mdi:mouse-right-click" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-right-click"/>
 </g>
 <g class="combo combopos-0">
 <rect rx="6" ry="6" x="98" y="85" width="28" height="26" class="combo"/>
@@ -964,11 +964,8 @@ path.combo {
 <tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">◀</tspan>
 </text>
 </g>
-<g transform="translate(285, 209) rotate(12.0)" class="key held keypos-31">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
-<text x="0" y="0" class="key held tap">
-<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">0</tspan>
-</text>
+<g transform="translate(285, 209) rotate(12.0)" class="key keypos-31">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g transform="translate(345, 226) rotate(24.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

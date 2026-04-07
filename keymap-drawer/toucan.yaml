@@ -7,7 +7,7 @@ layers:
   - C
   - V
   - J
-  - F
+  - Y
   - O
   - U
   - {t: '?', h: '!'}
@@ -16,7 +16,7 @@ layers:
   - T
   - S
   - G
-  - Y
+  - P
   - H
   - A
   - E
@@ -27,7 +27,7 @@ layers:
   - W
   - Z
   - K
-  - P
+  - F
   - {t: ',', h: ;}
   - {t: ., h: ':'}
   - {t: '-', h: _}
@@ -107,10 +107,10 @@ layers:
   - ''
   - ''
   - ''
-  - ''
-  - {t: '$$mdi:mouse-left-click$$', type: held}
-  - $$mdi:mouse-right-click$$
   - $$mdi:mouse-left-click-outline$$
+  - {type: held}
+  - $$mdi:mouse-left-click$$
+  - $$mdi:mouse-right-click$$
   Bridge:
   - {h: '$$mdi:bluetooth-off$$'}
   - $$mdi:skip-next$$
@@ -143,7 +143,7 @@ layers:
   - ''
   - {h: Boot}
   - BT ◀
-  - {t: BT 0, type: held}
+  - ''
   - BT ▶
   - ''
   - ''
