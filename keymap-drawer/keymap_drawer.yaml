@@ -23,6 +23,7 @@ parse_config:
     - space_nav
     - magic_key
     - glyph_tap
+    - shift_morph
   raw_binding_map:
     # Numbers
     '&kp DE_N0': '0'
@@ -35,26 +36,30 @@ parse_config:
     '&kp DE_N7': '7'
     '&kp DE_N8': '8'
     '&kp DE_N9': '9'
-    # hml — Gallium layer (show tap only)
-    '&hml LEFT_GUI N': 'N'
-    '&hml LEFT_ALT R': 'R'
-    '&hml LEFT_CONTROL T': 'T'
-    '&hml LEFT_SHIFT S': 'S'
-    # hmr — Gallium layer (show tap only)
-    '&hmr RIGHT_SHIFT H': 'H'
-    '&hmr RIGHT_CONTROL A': 'A'
-    '&hmr RIGHT_ALT E': 'E'
-    '&hmr RIGHT_GUI I': 'I'
-    # hml — NumSym layer (show tap only)
-    '&hml LEFT_GUI DE_N0': '0'
-    '&hml LEFT_ALT DE_N4': '4'
-    '&hml LEFT_CONTROL DE_N5': '5'
-    '&hml LEFT_SHIFT DE_N6': '6'
-    # hmr — NumSym layer (show tap only)
-    '&hmr RIGHT_SHIFT DE_RBRC': '}'
-    '&hmr RIGHT_CONTROL DE_CARET': '^'
-    '&hmr RIGHT_ALT DE_GRAVE': '`'
-    '&hmr RIGHT_GUI DE_TILDE': '~'
+    # hml_slow — Gallium layer (show tap only)
+    '&hml_slow LEFT_GUI N': 'N'
+    '&hml_slow LEFT_ALT R': 'R'
+    '&hml_slow LEFT_CONTROL T': 'T'
+    # hml_shift — Gallium layer (show tap only)
+    '&hml_shift LEFT_SHIFT S': 'S'
+    # hmr_shift — Gallium layer (show tap only)
+    '&hmr_shift RIGHT_SHIFT H': 'H'
+    # hmr_slow — Gallium layer (show tap only)
+    '&hmr_slow RIGHT_CONTROL A': 'A'
+    '&hmr_slow RIGHT_ALT E': 'E'
+    '&hmr_slow RIGHT_GUI I': 'I'
+    # hml_slow — Glyph layer (show tap only)
+    '&hml_slow LEFT_GUI DE_N0': '0'
+    '&hml_slow LEFT_ALT DE_N4': '4'
+    '&hml_slow LEFT_CONTROL DE_N5': '5'
+    # hml_shift — Glyph layer (show tap only)
+    '&hml_shift LEFT_SHIFT DE_N6': '6'
+    # hmr_shift — Glyph layer (show tap only)
+    '&hmr_shift RIGHT_SHIFT DE_RBRC': '}'
+    # hmr_slow — Glyph layer (show tap only)
+    '&hmr_slow RIGHT_CONTROL DE_CARET': '^'
+    '&hmr_slow RIGHT_ALT DE_GRAVE': '`'
+    '&hmr_slow RIGHT_GUI DE_TILDE': '~'
     # Letters (Y/Z swapped for Swiss German)
     '&kp DE_Y': 'Y'
     '&kp DE_Z': 'Z'
@@ -136,10 +141,8 @@ parse_config:
     '&mt DE_UNDER DE_MINUS': {t: '-', h: '_'}
     '&mt DE_EXCL DE_QMARK': {t: '?', h: '!'}
     # Thumb cluster hold-taps
-    '&space_nav 3 DE_SPACE': {t: '$$mdi:keyboard-space$$', h: 'Bridge', type: held}
-    # Combo outputs — custom macros
-    '&quote_pair': {t: '""', h: '←'}
-    '&paren_pair': {t: '()', h: '←'}
+    '&space_nav 3 DE_SPACE': {t: '$$mdi:keyboard-space$$', h: 'Bridge'}
+    '&shift_morph LSHIFT 0': {t: 'Smart Shift', h: '$$mdi:apple-keyboard-shift$$'}
     # Combo outputs — clipboard
     '&kp LC(C)': '$$mdi:content-copy$$'
     '&kp LC(V)': '$$mdi:content-paste$$'
@@ -168,7 +171,7 @@ parse_config:
     '&kp RET': '$$mdi:keyboard-return$$'
     '&kp ENTER': '$$mdi:keyboard-return$$'
     '&kp PSCRN': '$$mdi:monitor-screenshot$$'
-    # Modifiers (raw, for Fn layer right side)
+    # Modifiers (raw, for Helm layer right side)
     '&kp LEFT_GUI': '$$mdi:apple-keyboard-command$$'
     '&kp RIGHT_GUI': '$$mdi:apple-keyboard-command$$'
     '&kp LEFT_ALT': '$$mdi:apple-keyboard-option$$'
@@ -187,7 +190,7 @@ parse_config:
     # Bluetooth
     '&bt BT_CLR': '$$mdi:bluetooth-off$$'
     '&bt BT_CLR_ALL': '$$mdi:bluetooth-off$$'
-    '&bt BT_SEL 0': 'BT 1'
+    '&bt BT_SEL 0': {t: 'BT 0', type: held}
     '&bt BT_PRV': 'BT ◀'
     '&bt BT_NXT': 'BT ▶'
     # Mouse buttons
@@ -206,6 +209,8 @@ parse_config:
     '&key_repeat': '↺'
     '&magic_key_tap': '✦'
     '&num_word': '№'
+    # bspc_del morph
+    '&bspc_del': {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
   zmk_keycode_map:
     N0: '0'
     N1: '1'
