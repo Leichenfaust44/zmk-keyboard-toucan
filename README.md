@@ -120,7 +120,7 @@ F11  F4  F5  F6  —  |   —  RSft RCtl RAlt RGui
 F12  F1  F2  F3  —  |   —   —    —    —    —
 ```
 
-**Thumb cluster:** `— | — | — | LClick | RClick | MClick`
+**Thumb cluster:** `— | — | MClick | — | RClick | MClick`
 
 Mouse clicks are on the thumb cluster — reachable while the trackpad hand moves the cursor.
 
