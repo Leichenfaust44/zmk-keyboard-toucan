@@ -32,11 +32,11 @@ layers:
   - {t: ., h: ':'}
   - {t: '-', h: _}
   - $$mdi:keyboard-esc$$
-  - {t: '$$mdi:keyboard-space$$', h: Bridge, type: held}
+  - {t: '$$mdi:keyboard-space$$', h: Bridge}
+  - {t: Smart Shift, h: '$$mdi:apple-keyboard-shift$$'}
   - {t: ✦, h: Helm}
+  - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
   - {t: №, h: Glyph}
-  - $$mdi:backspace-outline$$
-  - $$mdi:backspace-reverse-outline$$
   Glyph:
   - ''
   - '7'
@@ -63,17 +63,17 @@ layers:
   - '2'
   - '3'
   - ''
+  - '`'
   - ´
   - §
   - °
   - ''
-  - ''
   - {t: Gallium, h: toggle}
   - $$mdi:keyboard-space$$
-  - ''
-  - {t: Gallium, h: toggle, type: held}
-  - $$mdi:backspace-outline$$
-  - $$mdi:backspace-reverse-outline$$
+  - {t: Smart Shift, h: '$$mdi:apple-keyboard-shift$$'}
+  - {t: Gallium, h: toggle}
+  - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
+  - {t: №, type: held}
   Helm:
   - F10
   - F7
@@ -107,8 +107,8 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
-  - $$mdi:mouse-left-click$$
+  - ''
+  - {t: '$$mdi:mouse-left-click$$', type: held}
   - $$mdi:mouse-right-click$$
   - $$mdi:mouse-left-click-outline$$
   Bridge:
@@ -137,8 +137,8 @@ layers:
   - $$mdi:volume-mute$$
   - MicMute
   - ''
-  - CapsW
   - CapsL
+  - ''
   - $$mdi:monitor-screenshot$$
   - ''
   - {h: Boot}
@@ -198,13 +198,10 @@ combos:
   k: )
   l: [Gallium, Glyph]
 - p: [0, 10]
-  k: {t: '""', h: ←}
+  k: '"'
   l: [Gallium, Glyph]
 - p: [10, 20]
   k: ''''
-  l: [Gallium, Glyph]
-- p: [25, 26]
-  k: {t: (), h: ←}
   l: [Gallium, Glyph]
 - p: [9, 19]
   k: $$mdi:content-copy$$
