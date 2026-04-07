@@ -16,5 +16,5 @@ jobs:
       keymap_patterns: "config/toucan.keymap"
       config_path: "keymap-drawer/keymap_drawer.yaml"
       output_folder: "keymap-drawer"
-      draw_args: "toucan:'--dts-layout boards/shields/toucan/toucan.dtsi --layout-name five_col_layout'"
+      draw_args: "toucan:'--dts-layout boards/arm/piantor_pro_bt/piantor_pro_bt-layouts.dtsi --layout-name five_col_layout'"
       amend_commit: false
