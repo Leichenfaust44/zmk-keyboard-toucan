@@ -12,7 +12,7 @@ This config uses the **5-col layout** (outer pinky columns unused), making key p
 
 The left half features a **nice!view gem** display (Sharp Memory LCD). It shows the following widgets from top to bottom:
 
-[!\[Display](https://github.com/Leichenfaust44/zmk-keyboard-toucan/raw/main/keymap-drawer/toucan_display.svg)](https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/toucan\_display.svg)
+[!\[Display](https://github.com/Leichenfaust44/zmk-keyboard-toucan/raw/main/keymap-drawer/toucan_display.svg)](https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/toucan_display.svg)
 
 |Widget|Description|
 |-|-|
