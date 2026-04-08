@@ -106,8 +106,8 @@ Umlaut substitutions have a 1-second timeout window; all others have a 5-second 
 Numbers on the left, symbols on the right. Home row mods mirror the base layer split (Shift fast, Ctrl/Alt/Super slow). Activated by the Glyph thumb (momentary hold) or `num\\\_word` (tap — auto-exits when a non-number/symbol key is pressed).
 
 ```
- —   7   8   9   —  |  \\\[   ]   <   >   |
- 0   4   5   6   —  |  {   }   ^   `   \\\~
+ —   7   8   9   —  |  [   ]   <   >   |
+ 0   4   5   6   —  |  {   }   ^   `   ~
  .   1   2   3   —  |  `   ´   §   °   —
 ```
 
