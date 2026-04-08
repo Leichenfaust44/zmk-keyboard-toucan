@@ -37,14 +37,14 @@ Display configuration via [`nice\\\_view\\\_gem`](https://github.com/M165437/nic
 ```
 B  L  D  C  V  |  J  Y  O  U  ?/!
 N  R  T  S  G  |  P  H  A  E  I
-X  Q  M  W  Z  |  K  F  ,/; ./: -/\\\_
+X  Q  M  W  Z  |  K  F  ,/; ./: -/_
 ```
 
 **Hold-tap keys on the base layer:**
 
 * `,` → `;`
 * · `.` → `:`
-* · `-` → `\\\_`
+* · `-` → `_`
 * · `?` → `!`
 
 **Home row mods** (cross-hand activation only, balanced flavor):
@@ -56,8 +56,8 @@ Two separate behaviors are used — Shift activates faster, Ctrl/Alt/Super requi
 
 |Behavior|Keys|`tapping-term-ms`|`require-prior-idle-ms`|
 |-|-|-|-|
-|`hml\\\_shift` / `hmr\\\_shift`|S, H|200 ms|120 ms|
-|`hml\\\_slow` / `hmr\\\_slow`|N, R, T, A, E, I|400 ms|400 ms|
+|`hml_shift` / `hmr_shift`|S, H|200 ms|120 ms|
+|`hml_slow` / `hmr_slow`|N, R, T, A, E, I|400 ms|400 ms|
 
 **Thumb cluster:**
 
@@ -77,7 +77,7 @@ ESC | Space (hold: Bridge) | SmartShift | MagicKey (hold: Helm) | Backspace/Del 
 |**MagicKey**|Adaptive key (see below)|Helm layer|
 |**Backspace**|Backspace|—|
 |**Backspace** (with Shift)|Delete|—|
-|**Glyph**|`num\\\_word` (auto-exit number layer)|Momentary Glyph layer|
+|**Glyph**|`num_word` (auto-exit number layer)|Momentary Glyph layer|
 
 ### Magic Key — Adaptive Substitutions
 
@@ -177,14 +177,14 @@ All combos use `timeout-ms = 50ms` and `require-prior-idle-ms = 400ms` (300ms fo
 
 ```
 B+N → "    L+R → @    D+T → #    C+S → $
-N+X → '    R+Q → %    T+M → \\\\    S+W → =
+N+X → '    R+Q → %    T+M → \    S+W → =
 ```
 
 **Symbols — right hand vertical (top+home / home+bottom):**
 
 ```
-Y+H → +    O+A → \\\*    U+E → €    ?+I → Copy
-H+F → -    A+, → /    E+. → \\\&    I+- → Paste
+Y+H → +    O+A → *    U+E → €    ?+I → Copy
+H+F → -    A+, → /    E+. → &    I+- → Paste
 ?+- → Cut  (top+bottom pinky stretch)
 ```
 
