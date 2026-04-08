@@ -111,7 +111,7 @@ Numbers on the left, symbols on the right. Home row mods mirror the base layer s
  .   1   2   3   —  |  `   ´   §   °   —
 ```
 
-\---
+**Thumb cluster:** `none`
 
 ## Helm (Layer 2) — Function Keys and Mouse
 
@@ -140,7 +140,7 @@ Boot      Play  Mute   MicMute  —          | CapsL  —   PrtSc   —    Boot
 BT_PRV | — | BT_NXT | — | — | to(Base)
 ```
 
-`\\\*\\\*` = tap-dance safety: single tap does nothing, double-tap triggers the action.  
+`\\\*\\\*` = tap-dance safety: single tap does nothing, double-tap triggers the action. (BtClr, BtClrAll, Boot) 
 `MicMute` = `LGui+RAlt+K` shortcut.  
 `CapsL` = Caps Lock (manual toggle).
 
