@@ -1,6 +1,6 @@
 {
   "layouts": {
-    "Default Layout": {
+    "five_col_layout": {
       "layout": [
         { "x": 0.0, "y": 0.37 },
         { "x": 1.0, "y": 0.37 },
