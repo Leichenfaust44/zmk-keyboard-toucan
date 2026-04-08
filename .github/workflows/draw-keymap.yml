@@ -16,5 +16,5 @@ jobs:
       keymap_patterns: "config/toucan.keymap"
       config_path: "keymap-drawer/keymap_drawer.yaml"
       output_folder: "keymap-drawer"
-      draw_args: "toucan:'-n \"3vv3v33v3vv+3 3+3vv3v33v3vv\"'"
+      draw_args: "toucan: -n 3vv3v33v3vv+3_3+3vv3v33v3vv"
       amend_commit: false
