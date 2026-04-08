@@ -134,10 +134,10 @@ Mouse clicks are on the thumb cluster — reachable while the trackpad hand move
 Navigation on the right, system/media controls on the left. Activated by holding Space. **Trackpad acts as scroll wheel on this layer.**
 
 ```
-BtClrAll  Next  VolUp  RGB\\\_OFF  StudioUnlk | PgUp  Home  Up    End    BtClr 
+BtClrAll  Next  VolUp  RGB_OFF  StudioUnlk | PgUp  Home  Up    End    BtClr 
 —          Prev  VolDn  —        —          | PgDn  Left  Down  Right  Reset 
 Boot      Play  Mute   MicMute  —          | CapsL  —   PrtSc   —    Boot 
-BT\\\_PRV | — | BT\\\_NXT | — | — | to(Base)
+BT_PRV | — | BT_NXT | — | — | to(Base)
 ```
 
 `\\\*\\\*` = tap-dance safety: single tap does nothing, double-tap triggers the action.  
