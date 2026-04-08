@@ -140,6 +140,8 @@ Boot      Play  Mute   MicMute  —          | CapsL  —   PrtSc   —    Boot
 BT_PRV | — | BT_NXT | — | — | to(Base)
 ```
 
+**Thumb cluster:** `none`
+
 `\\\*\\\*` = tap-dance safety: single tap does nothing, double-tap triggers the action. (BtClr, BtClrAll, Boot) 
 `MicMute` = `LGui+RAlt+K` shortcut.  
 `CapsL` = Caps Lock (manual toggle).
