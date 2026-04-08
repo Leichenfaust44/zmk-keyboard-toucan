@@ -1,5 +1,4 @@
-layout:
-  cols_thumbs_notation: 3vv3v33v3vv+2 2+3vv3v33v3vv
+layout: {zmk_keyboard: toucan, layout_name: five_col_layout}
 layers:
   Gallium:
   - B
