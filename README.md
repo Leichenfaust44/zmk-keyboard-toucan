@@ -1,6 +1,6 @@
 # Toucan Keyboard — Gallium ZMK Config
 
-[![Keymap](https://github.com/Leichenfaust44/zmk-keyboard-toucan/raw/main/keymap-drawer/beekeep.png)](https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/beekeep.png)
+[![Keymap](https://github.com/Leichenfaust44/zmk-keyboard-toucan/raw/main/keymap-drawer/beekeep.jpg)](https://github.com/Leichenfaust44/zmk-keyboard-toucan/blob/main/keymap-drawer/beekeep.jpg)
 
 Custom ZMK firmware for the [beekeeb Toucan Keyboard](https://beekeeb.com/toucan-keyboard/) using the **Gallium v2** Columnar Staggered layout, optimised for Swiss German (DE-CH) input.
 
