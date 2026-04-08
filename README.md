@@ -111,7 +111,7 @@ Numbers on the left, symbols on the right. Home row mods mirror the base layer s
  .   1   2   3   —  |  `   ´   §   °   —
 ```
 
-**Thumb cluster:** `back | Space | — | back | Backspace | MClick`
+**Thumb cluster:** `to(0) | Space | — | to(0) | Backspace | num_word`
 
 ## Helm (Layer 2) — Function Keys and Mouse
 
@@ -137,8 +137,9 @@ Navigation on the right, system/media controls on the left. Activated by holding
 BtClrAll  Next  VolUp  RGB_OFF  StudioUnlk | PgUp  Home  Up    End    BtClr 
 —          Prev  VolDn  —        —          | PgDn  Left  Down  Right  Reset 
 Boot      Play  Mute   MicMute  —          | CapsL  —   PrtSc   —    Boot 
-BT_PRV | — | BT_NXT | — | — | to(Base)
 ```
+
+**Thumb cluster:** `BT_PRV | — | BT_NXT | — | — | to(Base)`
 
 `\\\*\\\*` = tap-dance safety: single tap does nothing, double-tap triggers the action. (BtClr, BtClrAll, Boot) 
 `MicMute` = `LGui+RAlt+K` shortcut.  
