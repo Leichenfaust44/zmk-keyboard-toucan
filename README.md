@@ -42,7 +42,10 @@ X  Q  M  W  Z  |  K  F  ,/; ./: -/\\\_
 
 **Hold-tap keys on the base layer:**
 
-* `,` → `;` · `.` → `:` · `-` → `\\\_` · `?` → `!`
+* `,` → `;`
+* · `.` → `:`
+* · `-` → `\\\_`
+* · `?` → `!`
 
 **Home row mods** (cross-hand activation only, balanced flavor):
 
@@ -131,9 +134,9 @@ Mouse clicks are on the thumb cluster — reachable while the trackpad hand move
 Navigation on the right, system/media controls on the left. Activated by holding Space. **Trackpad acts as scroll wheel on this layer.**
 
 ```
-BtClrAll\\\*\\\* Next  VolUp  RGB\\\_OFF  StudioUnlk | PgUp  Home  Up    End    BtClr\\\*\\\*
-—          Prev  VolDn  —        —          | PgDn  Left  Down  Right  Reset\\\*\\\*
-Boot\\\*\\\*     Play  Mute   MicMute  —          | CapsL  —   PrtSc   —    Boot\\\*\\\*
+BtClrAll  Next  VolUp  RGB\\\_OFF  StudioUnlk | PgUp  Home  Up    End    BtClr 
+—          Prev  VolDn  —        —          | PgDn  Left  Down  Right  Reset 
+Boot      Play  Mute   MicMute  —          | CapsL  —   PrtSc   —    Boot 
 BT\\\_PRV | — | BT\\\_NXT | — | — | to(Base)
 ```
 
