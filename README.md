@@ -113,6 +113,8 @@ Numbers on the left, symbols on the right. Home row mods mirror the base layer s
 
 **Thumb cluster:** `to(0) | Space | — | to(0) | Backspace | num_word`
 
+\---
+
 ## Helm (Layer 2) — Function Keys and Mouse
 
 Function keys on the left (F1–F12 arranged like a numpad), raw modifier keys on the right home row for `Shift/Ctrl/Alt/Super + Fx` combinations. Activated by holding MagicKey **or by touching the trackpad** (touch processor fires `mo 2`).
