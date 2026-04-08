@@ -24,7 +24,7 @@ The left half features a **nice!view gem** display (Sharp Memory LCD). It shows 
 |**Output mode**|Active output highlighted (BLE or USB)|
 |**Active layer**|Current layer name displayed large at the bottom|
 
-Display configuration via [`nice\\\_view\\\_gem`](https://github.com/M165437/nice-view-gem). WPM fixed range and animation speed can be tuned in the shield conf.
+Display configuration via [`nice_view_gem`](https://github.com/M165437/nice-view-gem). WPM fixed range and animation speed can be tuned in the shield conf.
 
 \---
 
@@ -103,7 +103,7 @@ Umlaut substitutions have a 1-second timeout window; all others have a 5-second 
 
 ## Glyph (Layer 1) — Numbers and Symbols
 
-Numbers on the left, symbols on the right. Home row mods mirror the base layer split (Shift fast, Ctrl/Alt/Super slow). Activated by the Glyph thumb (momentary hold) or `num\\\_word` (tap — auto-exits when a non-number/symbol key is pressed).
+Numbers on the left, symbols on the right. Home row mods mirror the base layer split (Shift fast, Ctrl/Alt/Super slow). Activated by the Glyph thumb (momentary hold) or `num_word` (tap — auto-exits when a non-number/symbol key is pressed).
 
 ```
  —   7   8   9   —  |  [   ]   <   >   |
@@ -157,7 +157,7 @@ The Toucan's Cirque Pinnacle trackpad (right half) behaves differently depending
 |**Helm (2)**|Cursor movement + thumb cluster provides mouse clicks|
 |**Bridge (3)**|Scroll wheel (horizontal scroll inverted)|
 
-Pointer speed: 2.5× (`zip\\\_xy\\\_scaler 250 100`). Scroll speed: 1/5× (`zip\\\_scroll\\\_scaler 1 5`).
+Pointer speed: 2.5× (`zip_xy_scaler 250 100`). Scroll speed: 1/5× (`zip_scroll_scaler 1 5`).
 
 Power management: trackpad enters idle after 30 seconds of no keypresses, waking in \~300ms on touch. Deep sleep after 60 minutes.
 
@@ -202,31 +202,10 @@ H+F → -    A+, → /    E+. → &    I+- → Paste
 1. Go to the **Actions** tab → latest successful build
 2. Download the `firmware` artifact and extract the `.zip`:
 
-   * `seeeduino\\\_xiao\\\_ble\\\_toucan\\\_left-zmk.uf2`
-   * `seeeduino\\\_xiao\\\_ble\\\_toucan\\\_right-zmk.uf2`
-
-### Flash (Linux)
-
-Each half must be flashed separately. Double-press the reset button to enter bootloader — it mounts as `XIAO-SENSE`.
-
-```bash
-# Left half
-udisksctl mount -b /dev/disk/by-label/XIAO-SENSE \\\&\\\& \\\\
-  cp \\\~/Downloads/firmware/seeeduino\\\_xiao\\\_ble\\\_toucan\\\_left-zmk.uf2 /run/media/$USER/XIAO-SENSE/
-
-# Right half (disconnect left first, then put right into bootloader)
-udisksctl mount -b /dev/disk/by-label/XIAO-SENSE \\\&\\\& \\\\
-  cp \\\~/Downloads/firmware/seeeduino\\\_xiao\\\_ble\\\_toucan\\\_right-zmk.uf2 /run/media/$USER/XIAO-SENSE/
-```
+   * `seeeduino_xiao_ble_toucan_left-zmk.uf2`
+   * `seeeduino_xiao_ble_toucan_right-zmk.uf2`
 
 The keyboard reboots automatically after copying.
-
-**Troubleshooting:**
-
-* Device not appearing → try a different cable or port
-* Mount fails → check `lsblk`, or try `udisksctl mount -b /dev/sdX1`
-* "Already mounted" error → the `cp` will still work, ignore it
-* After first flash with trackpad support enabled, remove and re-pair the keyboard with all Bluetooth hosts (the HID descriptor changes)
 
 \---
 
@@ -240,7 +219,7 @@ Turn on both halves and search for "Toucan" on your device. The keyboard is in p
 
 Access the Bridge layer (hold Space) and use the thumb cluster:
 
-* `BT\\\_PRV` / `BT\\\_NXT` — cycle profiles
+* `BT_PRV` / `BT_NXT` — cycle profiles
 
 Destructive BT operations (BT\_CLR, BT\_CLR\_ALL) require a double-tap on Bridge.
 
@@ -256,7 +235,7 @@ Destructive BT operations (BT\_CLR, BT\_CLR\_ALL) require a double-tap on Bridge
 
 ## Modifying the Config
 
-1. Edit `config/toucan.keymap`, `config/toucan\\\_behaviors.dtsi`, or `config/toucan\\\_combos.dtsi`
+1. Edit `config/toucan.keymap`, `config/toucan_behaviors.dtsi`, or `config/toucan_combos.dtsi`
 2. Push → GitHub Actions builds automatically
 3. Download the firmware artifact from the Actions tab
 
@@ -273,7 +252,7 @@ The keymap, behaviors, and combos use **identical key positions and logic** to t
 
 Based on [ZMK Firmware](https://zmk.dev), MIT License.
 
-The included shield `nice\\\_view\\\_gem` is modified from [M165437/nice-view-gem](https://github.com/M165437/nice-view-gem), MIT License.
+The included shield `nice_view_gem` is modified from [M165437/nice-view-gem](https://github.com/M165437/nice-view-gem), MIT License.
 
 The embedded font QuinqueFive is designed by GGBotNet, licensed under the SIL Open Font License, Version 1.1.
 
