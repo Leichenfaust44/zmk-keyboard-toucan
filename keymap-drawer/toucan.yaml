@@ -70,7 +70,7 @@ layers:
   - ''
   - {t: Gallium, h: toggle}
   - $$mdi:keyboard-space$$
-  - {t: Smart Shift, h: '$$mdi:apple-keyboard-shift$$'}
+  - ''
   - {t: Gallium, h: toggle}
   - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
   - {t: №, type: held}
@@ -107,10 +107,10 @@ layers:
   - ''
   - ''
   - ''
-  - $$mdi:mouse-left-click-outline$$
-  - {type: held}
-  - $$mdi:mouse-left-click$$
+  - ''
+  - {t: '$$mdi:mouse-left-click$$', type: held}
   - $$mdi:mouse-right-click$$
+  - $$mdi:mouse-left-click-outline$$
   Bridge:
   - {h: '$$mdi:bluetooth-off$$'}
   - $$mdi:skip-next$$
@@ -137,13 +137,13 @@ layers:
   - $$mdi:volume-mute$$
   - MicMute
   - ''
+  - CapsW
   - CapsL
-  - ''
   - $$mdi:monitor-screenshot$$
   - ''
   - {h: Boot}
   - BT ◀
-  - {t: BT 0, type: held}
+  - ''
   - BT ▶
   - ''
   - ''

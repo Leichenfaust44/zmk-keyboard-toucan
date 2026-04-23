@@ -607,10 +607,6 @@ path.combo {
 </g>
 <g transform="translate(322, 240) rotate(15.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.9em">Smart</tspan><tspan x="0" dy="1.2em">Shift</tspan>
-</text>
-<use href="#mdi:apple-keyboard-shift" xlink:href="#mdi:apple-keyboard-shift" x="-6" y="12" height="12" width="12.0" class="key hold glyph mdi:apple-keyboard-shift"/>
 </g>
 <g transform="translate(438, 239) rotate(-15.0)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -818,18 +814,18 @@ path.combo {
 </g>
 <g transform="translate(322, 240) rotate(15.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:mouse-left-click-outline" xlink:href="#mdi:mouse-left-click-outline" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-left-click-outline"/>
 </g>
 <g transform="translate(438, 239) rotate(-15.0)" class="key held keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
+<use href="#mdi:mouse-left-click" xlink:href="#mdi:mouse-left-click" x="-7" y="-7" height="14" width="14.0" class="key held tap glyph mdi:mouse-left-click"/>
 </g>
 <g transform="translate(504, 227) rotate(-5.0)" class="key keypos-34">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:mouse-left-click" xlink:href="#mdi:mouse-left-click" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-left-click"/>
+<use href="#mdi:mouse-right-click" xlink:href="#mdi:mouse-right-click" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-right-click"/>
 </g>
 <g transform="translate(571, 226) rotate(5.0)" class="key keypos-35">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mdi:mouse-right-click" xlink:href="#mdi:mouse-right-click" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-right-click"/>
+<use href="#mdi:mouse-left-click-outline" xlink:href="#mdi:mouse-left-click-outline" x="-7" y="-7" height="14" width="14.0" class="key tap glyph mdi:mouse-left-click-outline"/>
 </g>
 <g class="combo combopos-0">
 <rect rx="6" ry="6" x="98" y="78" width="28" height="26" class="combo"/>
@@ -942,10 +938,11 @@ path.combo {
 </g>
 <g transform="translate(504, 160)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">CapsL</text>
+<text x="0" y="0" class="key tap">CapsW</text>
 </g>
 <g transform="translate(560, 154)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">CapsL</text>
 </g>
 <g transform="translate(616, 140)" class="key keypos-27">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -964,11 +961,8 @@ path.combo {
 <tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">◀</tspan>
 </text>
 </g>
-<g transform="translate(255, 227) rotate(5.0)" class="key held keypos-31">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
-<text x="0" y="0" class="key held tap">
-<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">0</tspan>
-</text>
+<g transform="translate(255, 227) rotate(5.0)" class="key keypos-31">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g transform="translate(322, 240) rotate(15.0)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
