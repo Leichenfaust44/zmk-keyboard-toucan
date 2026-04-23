@@ -1,5 +1,5 @@
 // =============================================================================
-// Combos for Toucan Keyboard
+// Combos for Toucan
 // =============================================================================
 // All combos are active on layers 0 (Gallium), 1 (Glyph).
 // The combos RETURN and TAB are also active on layer 2 (Helm).
@@ -15,11 +15,11 @@
 // Combo layout overview:
 //
 //   Left vertical (top+home / home+bottom):    Right vertical (top+home / home+bottom):
-//     B+N → "    N+X → '                        Y+H → +    H+F → -
-//     L+R → @    R+Q → %                        O+A → *    A+, → /
-//     D+T → #    T+M → \                        U+E → €    E+. → &
-//     C+S → $    S+W → =                        ?+I → Copy  I+- → Paste
-//                                               ?+- → Cut (top+bottom stretch)
+//     B+N → "    N+X → '                         Y+H → +    H+F → -
+//     L+R → @    R+Q → %                         O+A → *    A+, → /
+//     D+T → #    T+M → \                         U+E → €    E+. → &
+//     C+S → $    S+W → =                         ?+I → Copy  I+- → Paste
+//                                                ?+- → Cut (top+bottom stretch)
 //
 //   Left horizontal (home row):    Right horizontal (bottom row):
 //     R+T → Tab    T+S → Return      F+, → (    ,+. → )
@@ -27,21 +27,19 @@
 // Visual combo map:
 //
 //   Left hand                          Right hand
-//      "     @     #     $                 +     *     €  Copy
-//    B   L   D   C   V                 J   Y   O   U   ?
-//    |   |   |   |                         |   |   | \ | / (Cut)
-//   N━━━R━━━T━━━S   G                 P   H   A   E   I
-//    |   |   |   |                         |   |   |  Paste
-//    X   Q   M   W   Z                 K   F━━━,━━━.   -
-//   '    %   \   =                        (   )
+//    "   @   #   $                      +   *   €  Copy
+//    B   L   D   C   V     J   Y   O   U   ?
+//    |   |   |   |                  |   |   \   |   /  (Cut)
+//    N━━━R━━━T━━━S   G     P   H   A   E   I
+//    |   |   |   |                  |   |      Paste
+//    X   Q   M   W   Z     K   F━━━,━━━.   -
+//   ""   %   \   =                     (   )  (parentheses)
 //
-//        Tab━━Return (horizontal home row combos)
+//   Tab━━Return (horizontal home row combos)
 //
 // Timing:
 //   timeout-ms = 50ms (both keys must be pressed within this window)
-//   require-prior-idle-ms:
-//     Tab / Return: 300ms
-//     All others:  400ms
+//   require-prior-idle-ms = 400ms (symbols), 300ms (Tab/Return)
 // =============================================================================
 
 combos {

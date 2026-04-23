@@ -1,20 +1,19 @@
 // =============================================================================
-// Custom Behaviors for Toucan Keyboard
+// Custom Behaviors for Toucan
 // =============================================================================
 // Layer reference:
 //   0 = Gallium (default)   1 = Glyph   2 = Helm   3 = Bridge
 //
 // Timing Summary:
-//   Home row mods — Shift (hml_shift/hmr_shift):        200ms tap, 175ms quick-tap, 120ms prior-idle
-//   Home row mods — Ctrl/Alt/Super (hml_slow/hmr_slow): 400ms tap, 175ms quick-tap, 400ms prior-idle
+//   Home row mods — Shift (hml_shift/hmr_shift):          200ms tap, 175ms quick-tap, 120ms prior-idle
+//   Home row mods — Ctrl/Alt/Super (hml_slow/hmr_slow):   400ms tap, 175ms quick-tap, 400ms prior-idle
 //   Space/Nav (space_nav):         220ms tap, 175ms quick-tap, 175ms prior-idle
 //   Magic Key (magic_key):         200ms tap, 0ms quick-tap (tap-preferred)
 //   Glyph (glyph_tap):             240ms tap, 0ms quick-tap (balanced)
 //   Tap-dances (safety wrappers):  300ms double-tap window
-//   Combos:                        50ms timeout, 175ms prior-idle
+//   Combos:                        50ms timeout, 300-400ms prior-idle
 //
 // =============================================================================
-
 
 // -----------------------------------------------------------------------------
 // HOME ROW MODS — SHIFT (aggressive)
@@ -48,12 +47,12 @@ hmr_shift: homerow_mods_right_shift {
     hold-trigger-on-release;
 };
 
-
 // -----------------------------------------------------------------------------
 // HOME ROW MODS — CTRL / ALT / SUPER (conservative)
 // -----------------------------------------------------------------------------
-// Slow, deliberate activation — rarely used, always intentional.
-// Long tapping-term and prior-idle prevent accidental triggering.
+// Slow, deliberate activation — these modifiers are used rarely and always
+// intentionally. Long tapping-term and long prior-idle prevent any accidental
+// triggering during normal typing.
 // Timing: 400ms tapping term, 175ms quick-tap, 400ms prior-idle guard.
 
 // Left-hand Ctrl/Alt/Super HRM
@@ -82,17 +81,29 @@ hmr_slow: homerow_mods_right_slow {
     hold-trigger-on-release;
 };
 
-
 // -----------------------------------------------------------------------------
 // UMLAUT MACROS
 // -----------------------------------------------------------------------------
-// German umlauts via dead key composition: backspace + DE_UMLAUT + vowel.
-// Lowercase: release shift → BSPC → dead umlaut → vowel
-// Uppercase: release shift → BSPC → CAPSLOCK → dead umlaut → vowel → CAPSLOCK
-// Triggered by magic_key adaptive behavior after typing a/A/o/O/u/U.
+// Implementation for German umlauts (ä, ö, ü) using dead key composition.
+// Method: backspace + DE_UMLAUT dead key + base vowel
+// The OS composes these into the final umlaut character.
+//
+// Lowercase umlauts (a/o/u → ä/ö/ü):
+//   - Release any active shift
+//   - Backspace to remove the triggering letter
+//   - Type: dead umlaut + base vowel
+//
+// Uppercase umlauts (A/O/U → Ä/Ö/Ü):
+//   - Release any active shift
+//   - Backspace to remove the triggering letter
+//   - Temporarily enable CAPSLOCK
+//   - Type: dead umlaut + base vowel
+//   - Disable CAPSLOCK
+//
+// Note: These are triggered by the magic_key adaptive behavior after typing a/A/o/O/u/U
 // -----------------------------------------------------------------------------
 
-// ä
+// ä — backspace + dead umlaut + a
 uml_a: umlaut_a {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -117,7 +128,7 @@ uml_a_upper: umlaut_a_upper {
         ;
 };
 
-// ö
+// ö — backspace + dead umlaut + o
 uml_o: umlaut_o {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -142,7 +153,7 @@ uml_o_upper: umlaut_o_upper {
         ;
 };
 
-// ü
+// ü — backspace + dead umlaut + u
 uml_u: umlaut_u {
     compatible = "zmk,behavior-macro";
     #binding-cells = <0>;
@@ -167,49 +178,30 @@ uml_u_upper: umlaut_u_upper {
         ;
 };
 
-
 // -----------------------------------------------------------------------------
-// SPECIAL CHARACTER MACROS
+// MAGIC KEY SYSTEM
 // -----------------------------------------------------------------------------
-
-// Parentheses with cursor in between: ()←
-paren_pair: paren_pair_macro {
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_tap &kp DE_LEFT_PARENTHESIS>
-        , <&macro_tap &kp DE_RIGHT_PARENTHESIS>
-        , <&macro_tap &kp LEFT>
-        ;
-};
-
-// Double quotes with cursor in between: ""←
-quote_pair: quote_pair_macro {
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_tap &kp DE_DQT>
-        , <&macro_tap &kp DE_DQT>
-        , <&macro_tap &kp LEFT>
-        ;
-};
-
-
-// -----------------------------------------------------------------------------
-// MAGIC KEY SYSTEM — Piantor DE-optimised bigram set
-// -----------------------------------------------------------------------------
-// Adaptive substitutions:
-//   E→U  «eu»: SFB Ringfinger rechts x2, «heute/neu/Euro»
-//   I→E  «ie»: rückwärts Roll Kleinfinger→Ringfinger rechts, «die/wie/nie»
-//   L→D  «ld»: rückwärts Roll gleiche Reihe links, «Wald/Geld/wild»
-//   N→D  «nd»: rückwärts home→top links, «und/Kind/Hand»
-//   P→F  «pf»: SFB Zeigefinger rechts x2, «Pferd/Kopf/Pfanne»
-//   Q→U  «qu»: Q kommt praktisch nie ohne U vor
-//   -→>  arrow: ->
-//   Umlauts (1s): a→ä  A→Ä  o→ö  O→Ö  u→ü  U→Ü
-//   Default: key_repeat
+// The Magic Key provides intelligent repeat and context-aware substitutions.
 //
-// Timeout: Umlauts 1000ms, all others 5000ms.
+// Adaptive substitutions (within timeout window):
+//   Letter bigrams: C→H E→U H→E I→E L→D N→D P→F Q→U
+//   Special pairs:  -→>
+//   Umlauts (1s):   a→ä A→Ä o→ö O→Ö u→ü U→Ü
+//   Default:        key_repeat (any other key)
+//
+// Bigram rationale (häufig in DE + mühsam auf Gallium):
+//   C→H «ch»: häufig (auch/ich/noch), Alternation L↔R — hohe Frequenz rechtfertigt Magic
+//   E→U «eu»: SFB (Ringfinger rechts x2), «heute/neu/Euro»
+//   H→E «he»: rückwärts skip-finger rechts, «heben/hell/her»
+//   I→E «ie»: rückwärts Roll (Kleinfinger→Ringfinger rechts), «die/wie/nie/viel»
+//   L→D «ld»: rückwärts Roll gleiche Reihe links, «Wald/Geld/wild»
+//   N→D «nd»: rückwärts (home→top) links, «und/Kind/Hand»
+//   P→F «pf»: SFB (Zeigefinger rechts x2), «Pferd/Kopf/Pfanne»
+//   Q→U «qu»: Q kommt praktisch nie ohne U vor
+//
+// Timeout windows:
+//   - Umlauts: 1000ms (1 second) - must be typed quickly after vowel
+//   - Letter substitutions: 5000ms (5 seconds) - longer window for natural typing
 // -----------------------------------------------------------------------------
 
 magic_key_tap: magic_key_tap {
@@ -233,7 +225,7 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // E → U (bigram «eu»)
+    // E → output U (bigram «eu»: SFB Ringfinger rechts, «heute/neu/Euro»)
     repeat_e {
         trigger-keys = <E>;
         bindings = <&kp U>;
@@ -241,7 +233,15 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // I → E (bigram «ie»)
+    // H → output E (bigram «he»: rückwärts skip-finger rechts, «heben/hell/her»)
+    repeat_h {
+        trigger-keys = <H>;
+        bindings = <&kp E>;
+        max-prior-idle-ms = <5000>;
+        strict-modifiers;
+    };
+
+    // I → output E (bigram «ie»: rückwärts Roll Kleinfinger→Ringfinger rechts, «die/wie/nie»)
     repeat_i {
         trigger-keys = <I>;
         bindings = <&kp E>;
@@ -249,7 +249,7 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // L → D (bigram «ld»)
+    // L → output D (bigram «ld»: rückwärts Roll gleiche Reihe links, «Wald/Geld/wild»)
     repeat_l {
         trigger-keys = <L>;
         bindings = <&kp D>;
@@ -257,7 +257,7 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // N → D (bigram «nd»)
+    // N → output D (bigram «nd»: rückwärts home→top links, «und/Kind/Hand»)
     repeat_n {
         trigger-keys = <N>;
         bindings = <&kp D>;
@@ -281,7 +281,7 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // P → F (bigram «pf»)
+    // P → output F (bigram «pf»: SFB Zeigefinger rechts, «Pferd/Kopf/Pfanne»)
     repeat_p {
         trigger-keys = <P>;
         bindings = <&kp F>;
@@ -289,7 +289,7 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // Q → U (bigram «qu»)
+    // Q → output U (bigram «qu»: Q kommt praktisch nie ohne U vor)
     repeat_q {
         trigger-keys = <Q>;
         bindings = <&kp U>;
@@ -313,16 +313,18 @@ magic_key_tap: magic_key_tap {
         strict-modifiers;
     };
 
-    // - → > (arrow: ->)
+    // - → output > (arrow: ->)
     repeat_minus {
         trigger-keys = <DE_MINUS>;
         bindings = <&kp DE_GT>;
         max-prior-idle-ms = <5000>;
         strict-modifiers;
     };
+
 };
 
-// Hold = momentary layer (&mo), Tap = magic_key_tap.
+// The Magic Key on the default layer thumb cluster.
+// Hold = momentary layer activation (&mo), Tap = magic_key_tap (adaptive repeat/substitution).
 // Timing: 200ms tapping term (tap-preferred), 0ms quick-tap.
 magic_key: magic_key {
     compatible = "zmk,behavior-hold-tap";
@@ -334,12 +336,13 @@ magic_key: magic_key {
     bindings = <&mo>, <&magic_key_tap>;
 };
 
-
 // -----------------------------------------------------------------------------
 // TAP-DANCE SAFETY WRAPPERS (dangerous / destructive actions)
 // Single tap = nothing. Double tap = action.
+// Prevents accidental triggering of destructive system functions.
 // -----------------------------------------------------------------------------
 
+// Double-tap to clear ALL Bluetooth profiles. Single tap is a no-op.
 td_bt_clr_all: tap_dance_bt_clear_all {
     compatible = "zmk,behavior-tap-dance";
     #binding-cells = <0>;
@@ -347,6 +350,7 @@ td_bt_clr_all: tap_dance_bt_clear_all {
     bindings = <&none>, <&bt BT_CLR_ALL>;
 };
 
+// Double-tap to clear the CURRENT Bluetooth profile. Single tap is a no-op.
 td_bt_clr: tap_dance_bt_clear {
     compatible = "zmk,behavior-tap-dance";
     #binding-cells = <0>;
@@ -354,6 +358,7 @@ td_bt_clr: tap_dance_bt_clear {
     bindings = <&none>, <&bt BT_CLR>;
 };
 
+// Double-tap to trigger a system reset. Single tap is a no-op.
 td_reset: tap_dance_reset {
     compatible = "zmk,behavior-tap-dance";
     #binding-cells = <0>;
@@ -361,6 +366,7 @@ td_reset: tap_dance_reset {
     bindings = <&none>, <&sys_reset>;
 };
 
+// Double-tap to enter the bootloader. Single tap is a no-op.
 td_boot: tap_dance_bootloader {
     compatible = "zmk,behavior-tap-dance";
     #binding-cells = <0>;
@@ -368,14 +374,20 @@ td_boot: tap_dance_bootloader {
     bindings = <&none>, <&bootloader>;
 };
 
-
 // -----------------------------------------------------------------------------
-// SPACE / NAV THUMB
+// NAV LAYER SPECIAL BEHAVIOURS
 // -----------------------------------------------------------------------------
-// Hold = momentary Bridge layer, Tap = space.
-// Excludes dangerous corner positions (0,9,10,19,20,29) from hold-triggers.
-// Timing: 220ms tapping term (tap-preferred), 175ms quick-tap, 175ms prior-idle.
-
+// The Space/Nav thumb key on the default layer.
+// Hold = momentary Bridge layer (&mo), Tap = plain space (&kp DE_SPACE).
+// Cross-hand hold-trigger positions exclude dangerous reset/bootloader key positions
+// (positions 0, 9, 10, 19, 20, 29 are excluded for safety).
+// Timing: 220ms tapping term, 175ms quick-tap, 175ms prior-idle guard.
+//
+// Hold-trigger positions (excludes corner keys with dangerous actions):
+//    —   ✓   ✓   ✓   ✓  |  ✓   ✓   ✓   ✓   —      positions 1-8 (not 0,9)
+//    —   ✓   ✓   ✓   ✓  |  ✓   ✓   ✓   ✓   —      positions 11-18 (not 10,19)
+//    —   ✓   ✓   ✓   ✓  |  ✓   ✓   ✓   ✓   —      positions 21-28 (not 20,29)
+//                ✓   ✓   ✓   |  ✓   ✓   ✓           positions 30-35
 space_nav: space_nav_layer {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -388,13 +400,13 @@ space_nav: space_nav_layer {
     hold-trigger-on-release;
 };
 
-
 // -----------------------------------------------------------------------------
 // GLYPH THUMB KEY
 // -----------------------------------------------------------------------------
-// Hold = momentary Glyph layer, Tap = num_word (auto-exits on non-number key).
+// The Glyph thumb key on the default layer.
+// Hold = momentary Glyph layer (&mo), Tap = num_word (urob's auto-layer:
+// activates a number layer that auto-exits when non-number keys are pressed).
 // Timing: 240ms tapping term (balanced), 0ms quick-tap.
-
 glyph_tap: glyph_toggle_hold {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -405,12 +417,10 @@ glyph_tap: glyph_toggle_hold {
     bindings = <&mo>, <&num_word>;
 };
 
-
 // -----------------------------------------------------------------------------
-// BSPC / DEL MORPH
+// BACKSPACE / DELETE MOD-MORPH
 // -----------------------------------------------------------------------------
-// Tap = Backspace. Shift+Tap = Delete.
-
+// Tap = Backspace, Shift+Tap = Delete
 bspc_del: backspace_delete {
     compatible = "zmk,behavior-mod-morph";
     #binding-cells = <0>;
@@ -418,18 +428,19 @@ bspc_del: backspace_delete {
     mods = <(MOD_LSFT|MOD_RSFT)>;
 };
 
-
 // -----------------------------------------------------------------------------
 // SMART SHIFT
 // -----------------------------------------------------------------------------
-// Three-in-one shift key:
-//   Tap        = Sticky Shift (capitalises next keypress only)
-//   Hold       = Regular Shift
-//   Double-tap = Caps Word (capitalises until word boundary)
+// Three-in-one shift key for the left thumb:
+//   Tap        = Sticky Shift (&sk LSHIFT) — capitalises the next keypress only
+//   Hold       = Regular Shift (&kp LSHIFT) — works like a standard shift key
+//   Double-tap = Caps Word — capitalises until a word boundary is reached
 //
-// Implementation: mod-morph so Shift+tap → caps_word with no tap-dance delay.
+// Double-tap is implemented as a mod-morph (Shift + tap → Caps Word),
+// avoiding tap-dance delays on every single tap.
+// -----------------------------------------------------------------------------
 
-// Tap = sticky-shift; already shifted → caps_word.
+// Tap = sticky-shift; when already shifted (from the hold), tap → caps_word.
 smart_shift: smart_shift {
     compatible = "zmk,behavior-mod-morph";
     #binding-cells = <0>;
@@ -437,8 +448,8 @@ smart_shift: smart_shift {
     mods = <(MOD_LSFT|MOD_RSFT)>;
 };
 
-// Hold = regular shift, Tap = smart_shift.
-// Timing: 200ms tapping term (tap-preferred), 175ms quick-tap.
+// Hold = regular shift, Tap = smart_shift (sticky-shift / caps-word).
+// Timing: 200ms tapping term, tap-preferred to keep single taps snappy.
 shift_morph: shift_morph {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
