@@ -174,14 +174,16 @@
         status = "disabled";
         device = <&glidepoint_split>;
         input-processors = <&zip_xy_scaler 250 100>;
-        scroller {
-            layers = <3>;
-            input-processors = <
-                &zip_xy_to_scroll_mapper
-                &zip_scroll_scaler 1 5
-                &zip_scroll_transform INPUT_TRANSFORM_X_INVERT
-            >;
-        };
+        // Scroll-Funktion deaktiviert — PgUp/PgDn auf Nav-Layer uebernehmen das Scrollen.
+        // Das Touchpad bleibt auf allen Layern als Maus aktiv (inkl. Drag & Drop).
+        // scroller {
+        //     layers = <3>;
+        //     input-processors = <
+        //         &zip_xy_to_scroll_mapper
+        //         &zip_scroll_scaler 1 5
+        //         &zip_scroll_transform INPUT_TRANSFORM_X_INVERT
+        //     >;
+        // };
 
         base {
             layers = <0>;
