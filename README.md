@@ -86,9 +86,6 @@ The Magic Key repeats the last key by default, but applies smart substitutions f
 |After typing|Magic Key outputs|Rationale|
 |-|-|-|
 |`E`|`U`|«eu» SFB Ringfinger rechts — heute/neu/Euro|
-|`I`|`E`|«ie» rückwärts Roll — die/wie/nie/viel|
-|`L`|`D`|«ld» rückwärts Roll — Wald/Geld/wild|
-|`N`|`D`|«nd» rückwärts home→top — und/Kind/Hand|
 |`P`|`F`|«pf» SFB Zeigefinger rechts — Pferd/Kopf|
 |`Q`|`U`|«qu» Q kommt praktisch nie ohne U vor|
 |`-`|`>`|Produces `->`|
