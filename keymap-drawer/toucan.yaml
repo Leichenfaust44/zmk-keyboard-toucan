@@ -145,8 +145,8 @@ layers:
   - BT ◀
   - {t: BT 0, type: held}
   - BT ▶
+  - $$mdi:mouse-left-click$$
   - $$mdi:mouse-right-click$$
-  - ''
   - ''
 combos:
 - p: [11, 12]
