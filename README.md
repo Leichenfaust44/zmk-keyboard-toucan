@@ -18,13 +18,11 @@ The left half features a **nice!view gem** display (Sharp Memory LCD). It shows 
 
 |Widget|Description|
 |-|-|
-|**BLE / Layer**|Connection status (BLE/USB) and active layer name|
-|**WPM chart**|Bar chart of last 10 WPM values, fixed range 0–100|
 |**Batteries**|Charge bars for local (left) and peripheral (right) halves|
-|**Gem animation**|Rotating pixel crystal — signature of the nice!view gem shield|
-|**BT profile**|5 profile dots, active profile filled|
+|**WPM chart**|Bar chart of last 10 WPM values, fixed range 0–100|
+|**Active layer**|Current layer name displayed large in the middle|
 |**Output mode**|Active output highlighted (BLE or USB)|
-|**Active layer**|Current layer name displayed large at the bottom|
+|**BT profile**|5 profile dots, active profile filled|
 
 Display configuration via [`nice_view_gem`](https://github.com/M165437/nice-view-gem). WPM fixed range and animation speed can be tuned in the shield conf.
 
