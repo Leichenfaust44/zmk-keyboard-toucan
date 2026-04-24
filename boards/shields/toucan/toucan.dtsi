@@ -196,7 +196,7 @@
             compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
             codes = <INPUT_BTN_TOUCH>;  // fires on finger contact
-            bindings = <&mo 2>;         // momentary layer 2 (Helm) on touch
+            bindings = <&mo 3>;         // momentary layer 3 (Nav) on touch
         };
     };
 };
