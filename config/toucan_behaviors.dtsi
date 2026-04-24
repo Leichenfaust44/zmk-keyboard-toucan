@@ -184,18 +184,13 @@ uml_u_upper: umlaut_u_upper {
 // The Magic Key provides intelligent repeat and context-aware substitutions.
 //
 // Adaptive substitutions (within timeout window):
-//   Letter bigrams: C→H E→U H→E I→E L→D N→D P→F Q→U
+//   Letter bigrams: E→U P→F Q→U
 //   Special pairs:  -→>
 //   Umlauts (1s):   a→ä A→Ä o→ö O→Ö u→ü U→Ü
 //   Default:        key_repeat (any other key)
 //
 // Bigram rationale (häufig in DE + mühsam auf Gallium):
-//   C→H «ch»: häufig (auch/ich/noch), Alternation L↔R — hohe Frequenz rechtfertigt Magic
 //   E→U «eu»: SFB (Ringfinger rechts x2), «heute/neu/Euro»
-//   H→E «he»: rückwärts skip-finger rechts, «heben/hell/her»
-//   I→E «ie»: rückwärts Roll (Kleinfinger→Ringfinger rechts), «die/wie/nie/viel»
-//   L→D «ld»: rückwärts Roll gleiche Reihe links, «Wald/Geld/wild»
-//   N→D «nd»: rückwärts (home→top) links, «und/Kind/Hand»
 //   P→F «pf»: SFB (Zeigefinger rechts x2), «Pferd/Kopf/Pfanne»
 //   Q→U «qu»: Q kommt praktisch nie ohne U vor
 //
@@ -229,38 +224,6 @@ magic_key_tap: magic_key_tap {
     repeat_e {
         trigger-keys = <E>;
         bindings = <&kp U>;
-        max-prior-idle-ms = <5000>;
-        strict-modifiers;
-    };
-
-    // H → output E (bigram «he»: rückwärts skip-finger rechts, «heben/hell/her»)
-    repeat_h {
-        trigger-keys = <H>;
-        bindings = <&kp E>;
-        max-prior-idle-ms = <5000>;
-        strict-modifiers;
-    };
-
-    // I → output E (bigram «ie»: rückwärts Roll Kleinfinger→Ringfinger rechts, «die/wie/nie»)
-    repeat_i {
-        trigger-keys = <I>;
-        bindings = <&kp E>;
-        max-prior-idle-ms = <5000>;
-        strict-modifiers;
-    };
-
-    // L → output D (bigram «ld»: rückwärts Roll gleiche Reihe links, «Wald/Geld/wild»)
-    repeat_l {
-        trigger-keys = <L>;
-        bindings = <&kp D>;
-        max-prior-idle-ms = <5000>;
-        strict-modifiers;
-    };
-
-    // N → output D (bigram «nd»: rückwärts home→top links, «und/Kind/Hand»)
-    repeat_n {
-        trigger-keys = <N>;
-        bindings = <&kp D>;
         max-prior-idle-ms = <5000>;
         strict-modifiers;
     };
