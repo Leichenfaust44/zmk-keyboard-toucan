@@ -173,7 +173,7 @@
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&glidepoint_split>;
-        input-processors = <&zip_xy_scaler 250 100>;
+        input-processors = <&zip_xy_scaler 350 100>;
         // Scroll-Funktion deaktiviert — PgUp/PgDn auf Nav-Layer uebernehmen das Scrollen.
         // Das Touchpad bleibt auf allen Layern als Maus aktiv (inkl. Drag & Drop).
         // scroller {
