@@ -177,7 +177,7 @@
         // Scroll-Funktion deaktiviert — PgUp/PgDn auf Nav-Layer uebernehmen das Scrollen.
         // Das Touchpad bleibt auf allen Layern als Maus aktiv (inkl. Drag & Drop).
         // scroller {
-        //     layers = <3>;
+        //     layers = <4>;
         //     input-processors = <
         //         &zip_xy_to_scroll_mapper
         //         &zip_scroll_scaler 1 5
@@ -198,7 +198,7 @@
             compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
             codes = <INPUT_BTN_TOUCH>;  // fires on finger contact
-            bindings = <&mo 3>;         // momentary layer 3 (Nav) on touch
+            bindings = <&sl 3>;         // sticky layer 3 (Nav) — bleibt kurz aktiv nach Abheben
         };
     };
 };
