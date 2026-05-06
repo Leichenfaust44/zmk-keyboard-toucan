@@ -258,4 +258,28 @@ combos {
         layers = <0>;
     };
 
+    // =========================================================================
+    // MOUSE CLICKS — Left hand bottom row
+    // =========================================================================
+    // Designed for use while right hand is on the touchpad.
+    // High require-prior-idle-ms to prevent accidental activation while typing.
+
+    // M+W (positions 22+23) → Left Click
+    combo_mouse_lclick {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <800>;
+        key-positions = <22 23>;
+        bindings = <&mkp LCLK>;
+        layers = <0>;
+    };
+
+    // Q+M (positions 21+22) → Right Click
+    combo_mouse_rclick {
+        timeout-ms = <50>;
+        require-prior-idle-ms = <800>;
+        key-positions = <21 22>;
+        bindings = <&mkp RCLK>;
+        layers = <0>;
+    };
+
 };
