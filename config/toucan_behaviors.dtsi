@@ -201,7 +201,8 @@ uml_u_upper: umlaut_u_upper {
 magic_key_tap: magic_key_tap {
     compatible = "zmk,behavior-adaptive-key";
     #binding-cells = <0>;
-    bindings = <&key_repeat>;
+    bindings = <&none>;
+    //bindings = <&key_repeat>;
 
     // a → ä
     repeat_a {
