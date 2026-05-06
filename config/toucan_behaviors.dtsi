@@ -184,7 +184,7 @@ uml_u_upper: umlaut_u_upper {
 // The Magic Key provides intelligent repeat and context-aware substitutions.
 //
 // Adaptive substitutions (within timeout window):
-//   Letter bigrams: E→U P→F Q→U
+//   Letter bigrams: E→U P→F
 //   Special pairs:  -→>
 //   Umlauts (1s):   a→ä A→Ä o→ö O→Ö u→ü U→Ü
 //   Default:        key_repeat (any other key)
@@ -192,7 +192,6 @@ uml_u_upper: umlaut_u_upper {
 // Bigram rationale (häufig in DE + mühsam auf Gallium):
 //   E→U «eu»: SFB (Ringfinger rechts x2), «heute/neu/Euro»
 //   P→F «pf»: SFB (Zeigefinger rechts x2), «Pferd/Kopf/Pfanne»
-//   Q→U «qu»: Q kommt praktisch nie ohne U vor
 //
 // Timeout windows:
 //   - Umlauts: 1000ms (1 second) - must be typed quickly after vowel
@@ -248,14 +247,6 @@ magic_key_tap: magic_key_tap {
     repeat_p {
         trigger-keys = <P>;
         bindings = <&kp F>;
-        max-prior-idle-ms = <5000>;
-        strict-modifiers;
-    };
-
-    // Q → output U (bigram «qu»: Q kommt praktisch nie ohne U vor)
-    repeat_q {
-        trigger-keys = <Q>;
-        bindings = <&kp U>;
         max-prior-idle-ms = <5000>;
         strict-modifiers;
     };
