@@ -61,7 +61,7 @@ Two separate behaviors are used — Shift activates faster, Ctrl/Alt/Super requi
 **Thumb cluster:**
 
 ```
-ESC | Space (hold: Nav) | MagicKey (hold: FN) | SmartShift | Backspace/Del | Sym
+ESC (hold: FN) | MagicKey (hold: Nav) | Backspace/Del | SmartShift | Space | Sym
 ```
 
 ---
@@ -70,12 +70,13 @@ ESC | Space (hold: Nav) | MagicKey (hold: FN) | SmartShift | Backspace/Del | Sym
 
 | Key | Tap | Hold |
 |-|-|-|
-| **Space** | Plain space | Nav layer |
-| **MagicKey** | Adaptive key (see below) | FN layer |
-| **SmartShift** | Sticky Shift (capitalises next key only) | Regular Shift |
-| **SmartShift** (double-tap) | Caps Word (capitalises until word boundary) | — |
+| **ESC** | Escape | FN layer |
+| **MagicKey** | Adaptive key (see below) | Nav layer |
 | **Backspace** | Backspace | — |
 | **Backspace** (with Shift) | Delete | — |
+| **SmartShift** | Sticky Shift (capitalises next key only) | Regular Shift |
+| **SmartShift** (double-tap) | Caps Word (capitalises until word boundary) | — |
+| **Space** | Plain space | — |
 | **Sym** | `num_word` (auto-exit number layer) | Momentary Sym layer |
 
 ### Magic Key — Adaptive Substitutions
@@ -111,7 +112,7 @@ Numbers on the left, symbols on the right. Home row mods mirror the base layer s
 
 ## FN (Layer 2) — Function Keys
 
-Function keys on the left (F1–F12 arranged like a numpad), raw modifier keys on the right home row for `Shift/Ctrl/Alt/Super + Fx` combinations. Activated by holding MagicKey.
+Function keys on the left (F1–F12 arranged like a numpad), raw modifier keys on the right home row for `Shift/Ctrl/Alt/Super + Fx` combinations. Activated by holding ESC.
 
 ```
 F10  F7  F8  F9  —  |   —   —    —    —    —
@@ -125,7 +126,7 @@ F12  F1  F2  F3  —  |   —   —    —    —    —
 
 ## Nav (Layer 3) — Navigation and System Controls
 
-Navigation on the right, system/media controls on the left. Activated by holding Space. **Trackpad acts as scroll wheel on this layer.**
+Navigation on the right, system/media controls on the left. Activated by holding MagicKey. **Trackpad acts as scroll wheel on this layer.**
 
 ```
 BtClrAll**  Next  VolUp  RGB_OFF  StudioUnlk  |  PgUp  Home   Up    End    BtClr**
@@ -225,12 +226,12 @@ Turn on both halves and search for "Toucan" on your device. The keyboard is in p
 
 ### Switching / Managing Profiles
 
-Access the Nav layer (hold Space) and use the thumb cluster:
+Access the Nav layer (hold MagicKey) and use the thumb cluster:
 
 * `BT_PRV` / `BT_NXT` — cycle profiles
 * `BT(0)` — select profile 0
 
-Destructive BT operations (BT\_CLR, BT\_CLR\_ALL) require a double-tap on Nav layer.
+Destructive BT operations (BT\_CLR, BT\_CLR\_ALL) require a double-tap on Nav layer (hold MagicKey).
 
 ---
 
