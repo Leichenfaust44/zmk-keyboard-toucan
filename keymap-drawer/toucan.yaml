@@ -73,9 +73,44 @@ layers:
   - ''
   - {t: Base, h: toggle}
   - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
-  - №
-  FN: [F10, F7, F8, F9, '', '', '', '', '', '', F11, F4, F5, F6, '', '', '$$mdi:apple-keyboard-shift$$', '$$mdi:apple-keyboard-control$$', '$$mdi:apple-keyboard-option$$',
-    '$$mdi:apple-keyboard-command$$', F12, F1, F2, F3, '', '', '', '', '', '', '', '', '', '', '', '']
+  - {t: №, type: held}
+  FN:
+  - F10
+  - F7
+  - F8
+  - F9
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - F11
+  - F4
+  - F5
+  - F6
+  - ''
+  - ''
+  - $$mdi:apple-keyboard-shift$$
+  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-option$$
+  - $$mdi:apple-keyboard-command$$
+  - F12
+  - F1
+  - F2
+  - F3
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
   Nav:
   - {h: '$$mdi:bluetooth-off$$'}
   - $$mdi:skip-next$$
