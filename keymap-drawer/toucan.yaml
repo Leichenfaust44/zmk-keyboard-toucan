@@ -32,7 +32,7 @@ layers:
   - {t: ., h: ':'}
   - {t: '-', h: _}
   - $$mdi:keyboard-esc$$
-  - {t: '$$mdi:keyboard-space$$', h: Bridge}
+  - {t: '$$mdi:keyboard-space$$', h: Nav}
   - {t: ✦, h: FN}
   - {t: Smart Shift, h: '$$mdi:apple-keyboard-shift$$'}
   - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
@@ -73,44 +73,9 @@ layers:
   - ''
   - {t: Base, h: toggle}
   - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
-  - {t: №, type: held}
-  FN:
-  - F10
-  - F7
-  - F8
-  - F9
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - F11
-  - F4
-  - F5
-  - F6
-  - ''
-  - ''
-  - $$mdi:apple-keyboard-shift$$
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-option$$
-  - $$mdi:apple-keyboard-command$$
-  - F12
-  - F1
-  - F2
-  - F3
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {type: held}
-  - ''
-  - ''
-  - ''
+  - №
+  FN: [F10, F7, F8, F9, '', '', '', '', '', '', F11, F4, F5, F6, '', '', '$$mdi:apple-keyboard-shift$$', '$$mdi:apple-keyboard-control$$', '$$mdi:apple-keyboard-option$$',
+    '$$mdi:apple-keyboard-command$$', F12, F1, F2, F3, '', '', '', '', '', '', '', '', '', '', '', '']
   Nav:
   - {h: '$$mdi:bluetooth-off$$'}
   - $$mdi:skip-next$$
@@ -211,4 +176,10 @@ combos:
   l: [Base]
 - p: [9, 29]
   k: $$mdi:content-cut$$
+  l: [Base]
+- p: [22, 23]
+  k: $$mdi:mouse-left-click$$
+  l: [Base]
+- p: [21, 22]
+  k: $$mdi:mouse-right-click$$
   l: [Base]
