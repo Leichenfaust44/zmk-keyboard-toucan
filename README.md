@@ -80,23 +80,16 @@ ESC | Space (hold: Nav) | MagicKey (hold: FN) | SmartShift | Backspace/Del | Sym
 
 ### Magic Key — Adaptive Substitutions
 
-The Magic Key repeats the last key by default, but applies smart substitutions for common bigrams optimised for German and English on the Gallium layout:
+The Magic Key applies smart substitutions for SFB bigrams on the Gallium layout. For any other key, nothing happens (no key repeat).
 
 | After typing | Magic Key outputs | Rationale |
 |-|-|-|
-| `C` | `H` | «ch» häufig — auch/ich/noch |
 | `E` | `U` | «eu» SFB Ringfinger rechts — heute/neu/Euro |
-| `H` | `E` | «he» rückwärts skip-finger rechts — heben/hell/her |
-| `I` | `E` | «ie» rückwärts Roll Kleinfinger→Ringfinger — die/wie/nie |
-| `L` | `D` | «ld» rückwärts Roll gleiche Reihe links — Wald/Geld/wild |
-| `N` | `D` | «nd» rückwärts home→top links — und/Kind/Hand |
 | `P` | `F` | «pf» SFB Zeigefinger rechts — Pferd/Kopf |
-| `Q` | `U` | «qu» Q kommt praktisch nie ohne U vor |
 | `-` | `>` | Produces `->` |
 | `a` / `A` | `ä` / `Ä` | Umlaut substitution (1 s window) |
 | `o` / `O` | `ö` / `Ö` | Umlaut substitution (1 s window) |
 | `u` / `U` | `ü` / `Ü` | Umlaut substitution (1 s window) |
-| anything else | key repeat | — |
 
 Umlaut substitutions have a 1-second timeout window; all others have a 5-second window.
 
@@ -140,7 +133,7 @@ BtClrAll**  Next  VolUp  RGB_OFF  StudioUnlk  |  PgUp  Home   Up    End    BtClr
 Boot**      Play  Mute   MicMute  —           |  CapsL  —    PrtSc   —     Boot**
 ```
 
-**Thumb cluster:** `BT_PRV | BT(0) | BT_NXT | LClick | RClick | —`
+**Thumb cluster:** `BT_PRV | BT(0) | BT_NXT | — | — | —`
 
 `**` = tap-dance safety: single tap does nothing, double-tap triggers the action (BtClr, BtClrAll, Boot).  
 `MicMute` = `LGui+RAlt+K` shortcut.  
@@ -164,8 +157,6 @@ The Toucan's Cirque Pinnacle trackpad (right half) is always active as a mouse c
 | Action | Result |
 |-|-|
 | Tap touchpad | Left click (tap-to-click) |
-| Nav layer → LClick thumb | Left click (held — enables drag & drop) |
-| Nav layer → RClick thumb | Right click |
 | `M+W` combo (Base layer) | Left click |
 | `Q+M` combo (Base layer) | Right click |
 
@@ -196,13 +187,13 @@ N+X → '    R+Q → %    T+M → \    S+W → =
 
 ```
 Y+H → +    O+A → *    U+E → €    ?+I → Copy
-H+F → -    A+, → /    E+. → &    I+- → Paste
+H+P → -    A+, → /    E+. → &    I+- → Paste
 ?+- → Cut  (top+bottom pinky stretch)
 ```
 
 **Brackets — right hand horizontal (bottom row):**
 
-* `F+,` → `(`
+* `P+,` → `(`
 * `,+.` → `)`
 
 **Mouse clicks — left hand bottom row (Base layer only, 800ms prior-idle):**
