@@ -194,7 +194,7 @@
             // |BtClrAll**| Next | VolUp |RGB_OFF|StudioUnlk|  |PgUp | Home | Up   | End  |BtClr** |
             // |    —     | Prev | VolDn |   —   |    —     |  |PgDn | Left | Down | Rght |Reset** |
             // |  Boot**  | Play | Mute  |MicMute|    —     |  |CapsL|  —   |PrtSc |  —   |Boot**  |
-            //            | BT_PRV | BT(0) | BT_NXT |   | LClick | RClick |  —  |
+            //            | BT_PRV | BT(0) | BT_NXT |   |  —  |  —  |  —  |
 
             bindings = <
                 &td_bt_clr_all  &kp C_NEXT  &kp C_VOL_UP  &rgb_ug RGB_OFF  &studio_unlock   &kp PG_UP     &kp HOME  &kp UP    &kp END    &td_bt_clr
