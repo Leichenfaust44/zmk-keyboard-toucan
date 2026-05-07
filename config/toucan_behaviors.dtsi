@@ -2,14 +2,14 @@
 // Custom Behaviors for Toucan
 // =============================================================================
 // Layer reference:
-//   0 = Gallium (default)   1 = Glyph   2 = Helm   3 = Bridge
+//   0 = Base (default)   1 = Sym   2 = FN   3 = Nav
 //
 // Timing Summary:
 //   Home row mods — Shift (hml_shift/hmr_shift):          200ms tap, 175ms quick-tap, 120ms prior-idle
 //   Home row mods — Ctrl/Alt/Super (hml_slow/hmr_slow):   400ms tap, 175ms quick-tap, 400ms prior-idle
 //   Space/Nav (space_nav):         220ms tap, 175ms quick-tap, 175ms prior-idle
 //   Magic Key (magic_key):         200ms tap, 0ms quick-tap (tap-preferred)
-//   Glyph (glyph_tap):             240ms tap, 0ms quick-tap (balanced)
+//   Sym (glyph_tap):               240ms tap, 0ms quick-tap (balanced)
 //   Tap-dances (safety wrappers):  300ms double-tap window
 //   Combos:                        50ms timeout, 300-400ms prior-idle
 //

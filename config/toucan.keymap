@@ -10,7 +10,7 @@
  * Layer order:
  *   0 = Base (default)
  *   1 = Sym
- *   2 = FN      ← also activated momentarily by trackpad touch (touch_processor → mo 2)
+ *   2 = FN
  *   3 = Nav    ← trackpad acts as scroll wheel on this layer
  *
  * ============================================================
@@ -92,11 +92,6 @@
     continue-list = <BSPC DEL DOT PLUS MINUS ASTRK FSLH EQUAL SPACE>;
 };
 
-&sl {
-    release-after-ms = <5000>;
-    ignore-modifiers;
-};
-
 &sk {
     release-after-ms = <5000>;
     quick-release;
@@ -171,8 +166,7 @@
 
         fn_layer {
             display-name = "FN";
-            // Function keys and mouse. Activated by holding MagicKey thumb (mo 2)
-            // OR trackpad touch (touch_processor → mo 2).
+            // Function keys. Activated by holding MagicKey thumb (mo 2).
             // Right side: raw modifiers on home row.
             // -----------------------------------------------------------------------
             // | F10 | F7  | F8  | F9  |  —  |   |  —  |  —  |  —  |  —  |  —  |
@@ -200,7 +194,7 @@
             // |BtClrAll**| Next | VolUp |RGB_OFF|StudioUnlk|  |PgUp | Home | Up   | End  |BtClr** |
             // |    —     | Prev | VolDn |   —   |    —     |  |PgDn | Left | Down | Rght |Reset** |
             // |  Boot**  | Play | Mute  |MicMute|    —     |  |CapsL|  —   |PrtSc |  —   |Boot**  |
-            //            | BT_PRV | BT(0) | BT_NXT |   |  -  |  -  |  —  |
+            //            | BT_PRV | BT(0) | BT_NXT |   | LClick | RClick |  —  |
 
             bindings = <
                 &td_bt_clr_all  &kp C_NEXT  &kp C_VOL_UP  &rgb_ug RGB_OFF  &studio_unlock   &kp PG_UP     &kp HOME  &kp UP    &kp END    &td_bt_clr

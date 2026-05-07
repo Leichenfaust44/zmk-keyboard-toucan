@@ -1,38 +1,38 @@
 // =============================================================================
 // Combos for Toucan
 // =============================================================================
-// All combos are active on layers 0 (Gallium), 1 (Glyph).
-// The combos RETURN and TAB are also active on layer 2 (Helm).
+// All combos are active on layers 0 (Base), 1 (Sym).
+// The combos RETURN and TAB are also active on layer 2 (FN).
 //
 // Key position reference (5-column layout):
 //
 //   Left hand                    Right hand
-//    0=B   1=L   2=D   3=C   4=V     5=J   6=Y   7=O   8=U   9=?
-//   10=N  11=R  12=T  13=S  14=G    15=P  16=H  17=A  18=E  19=I
-//   20=X  21=Q  22=M  23=W  24=Z    25=K  26=F  27=,  28=.  29=-
+//    0=B   1=L   2=D   3=C   4=V     5=J   6=F   7=O   8=U   9=?
+//   10=N  11=R  12=T  13=S  14=G    15=Y  16=H  17=A  18=E  19=I
+//   20=X  21=Q  22=M  23=W  24=Z    25=K  26=P  27=,  28=.  29=-
 //                30    31    32      33    34    35
 //
 // Combo layout overview:
 //
 //   Left vertical (top+home / home+bottom):    Right vertical (top+home / home+bottom):
-//     B+N → "    N+X → '                         Y+H → +    H+F → -
+//     B+N → "    N+X → '                         Y+H → +    H+P → -
 //     L+R → @    R+Q → %                         O+A → *    A+, → /
 //     D+T → #    T+M → \                         U+E → €    E+. → &
 //     C+S → $    S+W → =                         ?+I → Copy  I+- → Paste
 //                                                ?+- → Cut (top+bottom stretch)
 //
 //   Left horizontal (home row):    Right horizontal (bottom row):
-//     R+T → Tab    T+S → Return      F+, → (    ,+. → )
+//     R+T → Tab    T+S → Return      P+, → (    ,+. → )
 //
 // Visual combo map:
 //
 //   Left hand                          Right hand
 //    "   @   #   $                      +   *   €  Copy
-//    B   L   D   C   V     J   Y   O   U   ?
+//    B   L   D   C   V     J   F   O   U   ?
 //    |   |   |   |                  |   |   \   |   /  (Cut)
-//    N━━━R━━━T━━━S   G     P   H   A   E   I
+//    N━━━R━━━T━━━S   G     Y   H   A   E   I
 //    |   |   |   |                  |   |      Paste
-//    X   Q   M   W   Z     K   F━━━,━━━.   -
+//    X   Q   M   W   Z     K   P━━━,━━━.   -
 //   ""   %   \   =                     (   )  (parentheses)
 //
 //   Tab━━Return (horizontal home row combos)
@@ -129,16 +129,16 @@ combos {
     // SYMBOLS — Vertical combos on the RIGHT hand
     // =========================================================================
 
-    // Y+H (positions 6+16) → +
+    // Y+H (positions 15+16) → +
     combo_char_plus {
         timeout-ms = <50>;
         require-prior-idle-ms = <400>;
-        key-positions = <6 16>;
+        key-positions = <15 16>;
         bindings = <&kp DE_PLUS>;
         layers = <0 1>;
     };
 
-    // H+F (positions 16+26) → -
+    // H+P (positions 16+26) → -
     combo_char_minus {
         timeout-ms = <50>;
         require-prior-idle-ms = <400>;
@@ -187,7 +187,7 @@ combos {
     // BRACKETS — Horizontal combos on the RIGHT hand bottom row
     // =========================================================================
 
-    // F+, (positions 26+27) → (
+    // P+, (positions 26+27) → (
     combo_char_lpar {
         timeout-ms = <50>;
         require-prior-idle-ms = <400>;
