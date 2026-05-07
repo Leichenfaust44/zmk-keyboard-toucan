@@ -31,11 +31,11 @@ layers:
   - {t: ',', h: ;}
   - {t: ., h: ':'}
   - {t: '-', h: _}
-  - $$mdi:keyboard-esc$$
-  - {t: '$$mdi:keyboard-space$$', h: Nav}
-  - {t: ✦, h: FN}
-  - {t: Smart Shift, h: '$$mdi:apple-keyboard-shift$$'}
+  - {t: '$$mdi:keyboard-esc$$', h: FN}
+  - {t: ✦, h: Nav}
   - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
+  - {t: Smart Shift, h: '$$mdi:apple-keyboard-shift$$'}
+  - $$mdi:keyboard-space$$
   - {t: №, h: Sym}
   Sym:
   - ''
@@ -105,9 +105,9 @@ layers:
   - ''
   - ''
   - ''
-  - ''
-  - ''
   - {type: held}
+  - ''
+  - ''
   - ''
   - ''
   - ''
