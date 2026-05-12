@@ -281,6 +281,7 @@ int zmk_widget_screen_init(struct zmk_widget_screen *widget, lv_obj_t *parent) {
     widget_layer_status_init();
     widget_output_status_init();
     widget_wpm_status_init();
+    init_sleep_animation(widget->obj);
 
     return 0;
 }

@@ -5,19 +5,24 @@
 
 /**
  * Draw a sleep screen showing the keyboard is in sleep mode.
- * This is displayed when the device enters deep sleep to give the user visual
- * feedback before the display is powered off.
+ * In practice this is a no-op — the animation overlay handles display.
  */
 void draw_sleep_screen(lv_obj_t *canvas);
 
 /**
  * Check if the sleep screen should be shown.
- * Returns true when the device is entering sleep mode.
  */
 bool is_sleep_screen_active(void);
 
 /**
  * Set the sleep screen active state.
- * Called by the activity state change handler.
+ * Shows/hides and starts/stops the Zero Two animation.
  */
 void set_sleep_screen_active(bool active);
+
+/**
+ * Initialize the Zero Two animation overlay.
+ * Must be called once during screen init, passing the widget parent object.
+ * The animation is hidden until set_sleep_screen_active(true) is called.
+ */
+void init_sleep_animation(lv_obj_t *parent);
