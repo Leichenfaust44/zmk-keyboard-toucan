@@ -37,9 +37,10 @@ void set_sleep_screen_active(bool active) {
     if (anim_img_obj != NULL) {
         if (active) {
             lv_obj_clear_flag(anim_img_obj, LV_OBJ_FLAG_HIDDEN);
+            lv_animimg_set_repeat_count(anim_img_obj, LV_ANIM_REPEAT_INFINITE);
             lv_animimg_start(anim_img_obj);
         } else {
-            lv_animimg_stop(anim_img_obj);
+            lv_animimg_set_repeat_count(anim_img_obj, 0);
             lv_obj_add_flag(anim_img_obj, LV_OBJ_FLAG_HIDDEN);
         }
     }
