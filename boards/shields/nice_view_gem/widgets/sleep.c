@@ -36,8 +36,21 @@ static const lv_img_dsc_t *zero_two_frames[] = {
     &zero_two_15, &zero_two_16, &zero_two_17, &zero_two_18, &zero_two_19,
 };
 #define ZERO_TWO_FRAME_COUNT 20
+#define FRAME_INTERVAL_MS 100  // 20 frames @ 100ms = 2s loop
 
-static lv_obj_t *anim_img_obj = NULL;
+static lv_obj_t *img_obj = NULL;
+static int current_frame = 0;
+
+static void animation_timer_cb(struct k_timer *timer) {
+    if (!show_sleep_screen || img_obj == NULL) {
+        return;
+    }
+    current_frame = (current_frame + 1) % ZERO_TWO_FRAME_COUNT;
+    lv_img_set_src(img_obj, zero_two_frames[current_frame]);
+    lv_refr_now(NULL);
+}
+
+K_TIMER_DEFINE(sleep_anim_timer, animation_timer_cb, NULL);
 
 bool is_sleep_screen_active(void) {
     return show_sleep_screen;
@@ -46,31 +59,29 @@ bool is_sleep_screen_active(void) {
 void set_sleep_screen_active(bool active) {
     show_sleep_screen = active;
 
-    if (anim_img_obj != NULL) {
-        if (active) {
-            lv_obj_clear_flag(anim_img_obj, LV_OBJ_FLAG_HIDDEN);
-            lv_animimg_set_repeat_count(anim_img_obj, LV_ANIM_REPEAT_INFINITE);
-            lv_animimg_start(anim_img_obj);
-        } else {
-            lv_animimg_set_repeat_count(anim_img_obj, 0);
-            lv_obj_add_flag(anim_img_obj, LV_OBJ_FLAG_HIDDEN);
-        }
+    if (img_obj == NULL) {
+        return;
+    }
+
+    if (active) {
+        current_frame = 0;
+        lv_img_set_src(img_obj, zero_two_frames[0]);
+        lv_obj_clear_flag(img_obj, LV_OBJ_FLAG_HIDDEN);
+        lv_refr_now(NULL);
+        k_timer_start(&sleep_anim_timer, K_MSEC(FRAME_INTERVAL_MS), K_MSEC(FRAME_INTERVAL_MS));
+    } else {
+        k_timer_stop(&sleep_anim_timer);
+        lv_obj_add_flag(img_obj, LV_OBJ_FLAG_HIDDEN);
     }
 }
 
 void draw_sleep_screen(lv_obj_t *canvas) {
-    // Sleep screen is handled by the animimg overlay — nothing to draw on canvas.
-    // The canvas is left blank (filled black by fill_background in screen.c).
+    // Handled by img_obj overlay — canvas stays black.
 }
 
 void init_sleep_animation(lv_obj_t *parent) {
-    // Frames are 87x64px, display is 144px wide.
-    // Center horizontally: (144 - 87) / 2 = 28
-    // Center vertically: (168 - 64) / 2 = 52
-    anim_img_obj = lv_animimg_create(parent);
-    lv_animimg_set_src(anim_img_obj, (const void **)zero_two_frames, ZERO_TWO_FRAME_COUNT);
-    lv_animimg_set_duration(anim_img_obj, 2000);
-    lv_animimg_set_repeat_count(anim_img_obj, LV_ANIM_REPEAT_INFINITE);
-    lv_obj_set_pos(anim_img_obj, 0, 0);
-    lv_obj_add_flag(anim_img_obj, LV_OBJ_FLAG_HIDDEN); // hidden until sleep
+    img_obj = lv_img_create(parent);
+    lv_img_set_src(img_obj, zero_two_frames[0]);
+    lv_obj_set_pos(img_obj, 0, 0);
+    lv_obj_add_flag(img_obj, LV_OBJ_FLAG_HIDDEN);
 }
