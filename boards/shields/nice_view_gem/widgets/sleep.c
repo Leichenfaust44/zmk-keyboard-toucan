@@ -36,18 +36,27 @@ static const lv_img_dsc_t *zero_two_frames[] = {
     &zero_two_15, &zero_two_16, &zero_two_17, &zero_two_18, &zero_two_19,
 };
 #define ZERO_TWO_FRAME_COUNT 20
-#define FRAME_INTERVAL_MS 100  // 20 frames @ 100ms = 2s loop
+#define FRAME_INTERVAL_MS 100
 
 static lv_obj_t *img_obj = NULL;
 static int current_frame = 0;
 
-static void animation_timer_cb(struct k_timer *timer) {
+// Work item — runs in system work queue, safe for LVGL
+static void anim_work_handler(struct k_work *work);
+static K_WORK_DEFINE(anim_work, anim_work_handler);
+
+static void anim_work_handler(struct k_work *work) {
     if (!show_sleep_screen || img_obj == NULL) {
         return;
     }
     current_frame = (current_frame + 1) % ZERO_TWO_FRAME_COUNT;
     lv_img_set_src(img_obj, zero_two_frames[current_frame]);
     lv_refr_now(NULL);
+}
+
+// Timer only submits work — never touches LVGL directly
+static void animation_timer_cb(struct k_timer *timer) {
+    k_work_submit(&anim_work);
 }
 
 K_TIMER_DEFINE(sleep_anim_timer, animation_timer_cb, NULL);
@@ -71,6 +80,7 @@ void set_sleep_screen_active(bool active) {
         k_timer_start(&sleep_anim_timer, K_MSEC(FRAME_INTERVAL_MS), K_MSEC(FRAME_INTERVAL_MS));
     } else {
         k_timer_stop(&sleep_anim_timer);
+        k_work_cancel(&anim_work);
         lv_obj_add_flag(img_obj, LV_OBJ_FLAG_HIDDEN);
     }
 }
