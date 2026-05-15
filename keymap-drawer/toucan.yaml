@@ -69,10 +69,10 @@ layers:
   - °
   - ''
   - {t: Base, h: toggle}
-  - $$mdi:keyboard-space$$
   - ''
+  - {t: ▽, type: trans}
   - {t: Base, h: toggle}
-  - {t: '$$mdi:backspace-outline$$', h: '$$mdi:backspace-reverse-outline$$'}
+  - {t: ▽, type: trans}
   - {t: №, type: held}
   FN:
   - F10
