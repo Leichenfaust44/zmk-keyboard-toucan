@@ -154,13 +154,13 @@
             // |  —  |  7  |  8  |  9  |  —  |   |  [  |  ]  |  <  |  >  |  |  |
             // |0/Gu↓|4/Al↓|5/Ct↓|6/Sf↑|  —  |   |  {  |}/ ↑ |^/Ct↓|`/Al↓|~/Gu↓|
             // |  .  |  1  |  2  |  3  |  —  |   |  `  |  ´  |  §  |  °  |  —  |
-            //       | to(0) | SPACE | — | to(0) | BSPC | num_word |
+            //       | to(0) |  —  | BSPC | to(0) | Space | num_word |
 
             bindings = <
                 &none                        &kp DE_N7                &kp DE_N8                    &kp DE_N9                    &none      &kp DE_LBKT   &kp DE_RBKT                      &kp DE_LT                         &kp DE_GT                    &kp DE_PIPE
                 &hml_slow LEFT_GUI DE_N0     &hml_slow LEFT_ALT DE_N4 &hml_slow LEFT_CONTROL DE_N5 &hml_shift LEFT_SHIFT DE_N6  &none      &kp DE_LBRC   &hmr_shift RIGHT_SHIFT DE_RBRC   &hmr_slow RIGHT_CONTROL DE_CARET  &hmr_slow RIGHT_ALT DE_GRAVE &hmr_slow RIGHT_GUI DE_TILDE
                 &kp DE_DOT                   &kp DE_N1                &kp DE_N2                    &kp DE_N3                    &none      &kp DE_GRAVE  &kp DE_ACUTE                     &kp DE_SECT                       &kp DE_DEG                   &none
-                                             &to 0                    &kp DE_SPACE                 &none                        &to 0      &bspc_del     &num_word 1
+                                             &to 0                    &none                        &trans                       &to 0      &trans        &num_word 1
             >;
         };
 
