@@ -47,14 +47,12 @@ static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, 0);
+    fill_background(canvas);
 
     if (is_sleep_screen_active()) {
-        lv_obj_add_flag(canvas, LV_OBJ_FLAG_HIDDEN);
+        draw_sleep_screen(canvas);
         return;
     }
-
-    lv_obj_clear_flag(canvas, LV_OBJ_FLAG_HIDDEN);
-    fill_background(canvas);
 
     // Draw widgets
     draw_output_status(canvas, state);
@@ -283,7 +281,6 @@ int zmk_widget_screen_init(struct zmk_widget_screen *widget, lv_obj_t *parent) {
     widget_layer_status_init();
     widget_output_status_init();
     widget_wpm_status_init();
-    init_sleep_animation(widget->obj);
 
     return 0;
 }
