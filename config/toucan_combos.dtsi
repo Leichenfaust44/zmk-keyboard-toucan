@@ -133,7 +133,7 @@ combos {
     combo_char_plus {
         timeout-ms = <50>;
         require-prior-idle-ms = <400>;
-        key-positions = <15 16>;
+        key-positions = <6 16>;
         bindings = <&kp DE_PLUS>;
         layers = <0 1>;
     };
