@@ -135,7 +135,7 @@ layers:
   - {h: Boot}
   - $$mdi:play-pause$$
   - $$mdi:volume-mute$$
-  - Gui+Alt+K
+  - MicMute
   - ''
   - CapsL
   - ''
@@ -145,9 +145,9 @@ layers:
   - BT ◀
   - {t: BT 0, type: held}
   - BT ▶
-  - Ctl+Gui+1
-  - Ctl+Gui+1
+  - Desktop W
   - ''
+  - Desktop P
 combos:
 - p: [11, 12]
   k: $$mdi:keyboard-tab$$
