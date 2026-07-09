@@ -200,7 +200,7 @@
                 &td_bt_clr_all  &kp C_NEXT  &kp C_VOL_UP  &rgb_ug RGB_OFF  &studio_unlock   &kp PG_UP     &kp HOME  &kp UP    &kp END    &td_bt_clr
                 &none           &kp C_PREV  &kp C_VOL_DN  &none            &none            &kp PG_DN     &kp LEFT  &kp DOWN  &kp RIGHT  &td_reset
                 &td_boot        &kp C_PP    &kp C_MUTE    &kp LG(LA(K))   &none            &kp CAPSLOCK  &none     &kp PSCRN &none      &td_boot
-                                &bt BT_PRV  &bt BT_SEL 0  &bt BT_NXT      &kp LC(LG(N1))    &kp LC(LG(N1))   &none
+                                &bt BT_PRV  &bt BT_SEL 0  &bt BT_NXT      &kp LC(LG(N1))    &none   &kp LC(LG(N2))
             >;
         };
 
