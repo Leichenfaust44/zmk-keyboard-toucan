@@ -145,8 +145,8 @@ layers:
   - BT ◀
   - {t: BT 0, type: held}
   - BT ▶
-  - ''
-  - ''
+  - Ctl+Gui+1
+  - Ctl+Gui+1
   - ''
 combos:
 - p: [11, 12]
