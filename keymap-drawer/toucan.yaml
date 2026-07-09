@@ -145,9 +145,9 @@ layers:
   - BT ◀
   - {t: BT 0, type: held}
   - BT ▶
-  - Ctl+Gui+LEFT
+  - Desktop W
   - ''
-  - Ctl+Gui+RIGHT
+  - Desktop P
 combos:
 - p: [11, 12]
   k: $$mdi:keyboard-tab$$
